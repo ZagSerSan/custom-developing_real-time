@@ -1,14 +1,8 @@
 import './App.css'
+import Widget from './components/Widget'
 
 function App() {
-
-  return (
-    <>
-      <div>
-        weather widget
-      </div>
-    </>
-  )
+  return <Widget />
 }
 
 export default App
