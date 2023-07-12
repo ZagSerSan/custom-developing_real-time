@@ -4,12 +4,18 @@
   border-radius: 15px;
   background-color: #fff;
   box-shadow: 0px 0px 10px #000;
+  overflow: hidden;
 
   transition: height 0.2s ease 0s;
+  &.show {
+    height: 190px;
+  }
 }
+
 .search-place {
   display: flex;
   position: relative;
+  justify-content: center;
 
   input {
     font-family: "Raleway", sans-serif;
@@ -36,6 +42,11 @@
     border-radius: 50%;
     position: relative;
     background-color: #fff;
+    transition: all 0.2s ease 0s;
+    &.hide {
+      width: 0;
+      opacity: 0;
+    }
 
     &:focus {
       outline: none;
@@ -92,6 +103,7 @@
     margin: 0;
   }
   &__descrip {
+    max-width: 60px;
     font-family: "Raleway", sans-serif;
     font-weight: 600;
     font-size: 12px;
@@ -152,10 +164,10 @@
     animation: loader 3s infinite linear;
     @keyframes loader {
       from {
-        transform: rotateZ(0deg);
+        transform: rotateZ(360deg);
       }
       to {
-        transform: rotateZ(360deg);
+        transform: rotateZ(0deg);
       }
     }
   }

@@ -5,23 +5,58 @@ import search_icon from '../assets/search.svg'
 import humidity_icon from '../assets/humidity.svg'
 import wind_icon from '../assets/wind.svg'
 import loading_icon from '../assets/loading.svg'
+import close_icon from '../assets/close.svg'
+import arrowUp_icon from '../assets/arrow-up.svg'
+import arrowDown_icon from '../assets/arrow-down.svg'
 
 const Widget = () => {
   const [weatherData, setWeatherData] = useState(null)
+  const [display, setDisplay] = useState(false)
   const [firstState, setFirstState] = useState(true)
   const sityInput = useRef(null)
 
   const getValue = () => {
+    setWeatherData(null)
     setFirstState(false)
+    setDisplay(true)
+
+    setTimeout(() => {
+      const btn_arrows = document.querySelector('.btn_arrows')
+      btn_arrows.classList.remove('hide')
+    }, 10)
+
     const sityName = sityInput.current.value.trim()
-    getWeather(sityName).then(data => setWeatherData({
-      ...data,
-      icon_src: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`  
-    }))
+    // getWeather(sityName).then(data => setWeatherData({
+    //   ...data,
+    //   icon_src: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`  
+    // }))
+    setTimeout(() => {
+      setWeatherData('data')  
+    }, 1000);
 
     const el = document.querySelector('.search')
-    el.style.height = '190px'
+    el.classList.add('show')
   }
+  
+  const clearData = (e) => {
+    e.stopPropagation()
+    
+    const el_search = document.querySelector('.search')
+    display ? setDisplay(false) : setDisplay(true)
+    el_search.classList.toggle('show')
+  }
+
+  document.addEventListener('click', (e) => {
+    e.stopPropagation()
+
+    const el_search = document.querySelector('.search')
+    const {target} = e
+    const its_menu = target === el_search || el_search.contains(target)
+    if (!its_menu) {
+      setDisplay(false)
+      el_search.classList.remove('show')
+    }
+  })
 
   return (
     <div className='search'>
@@ -30,44 +65,50 @@ const Widget = () => {
         <button onClick={getValue}>
           <img src={search_icon} alt="Search"/>
         </button>
+        {!firstState && (
+          <button className='btn_arrows hide' onClick={clearData}>
+            <img src={display ? arrowUp_icon : arrowDown_icon} alt="show/hide"/>
+          </button>
+        )}
       </div>
 
-      {weatherData ? (
-        <div className="info">
+      {weatherData && display ? (
+        // <div className="info">
 
-          <div className="info__col">
-            <img className='info__weather-img' src={weatherData.icon_src} />
+        //   <div className="info__col">
+        //     <img className='info__weather-img' src={weatherData.icon_src} />
 
-            <div className="info__row">
-              <p className="info__cels">
-                {weatherData.main.temp.toString().slice(0,2)} °C
-              </p>
-              <p className="info__descrip">
-                {weatherData.weather[0].description}
-              </p>
-            </div>
+        //     <div className="info__row">
+        //       <p className="info__cels">
+        //         {weatherData.main.temp.toString().slice(0,2)} °C
+        //       </p>
+        //       <p className="info__descrip">
+        //         {weatherData.weather[0].description}
+        //       </p>
+        //     </div>
 
-          </div>
-          <div className="info-col">
-            <div className='info-humidity'>
-              <img src={humidity_icon} alt="Search"/>
-              <div className="info-humidity__col">
-                <p>{weatherData.main.humidity} %</p>
-                <span>Humidity</span>
-              </div>
-            </div>
-            <div className='info-wind'>
-              <img src={wind_icon} alt="Search"/>
-              <div className="info-wind__col">
-                <p>{weatherData.wind.speed} <span><b>Km/h</b></span></p>
-                <span>Wind speed</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : !firstState ? (
+        //   </div>
+        //   <div className="info-col">
+        //     <div className='info-humidity'>
+        //       <img src={humidity_icon} alt="Search"/>
+        //       <div className="info-humidity__col">
+        //         <p>{weatherData.main.humidity} %</p>
+        //         <span>Humidity</span>
+        //       </div>
+        //     </div>
+        //     <div className='info-wind'>
+        //       <img src={wind_icon} alt="Search"/>
+        //       <div className="info-wind__col">
+        //         <p>{weatherData.wind.speed} <span><b>Km/h</b></span></p>
+        //         <span>Wind speed</span>
+        //       </div>
+        //     </div>
+        //   </div>
+        // </div>
+        <h1>data</h1>
+      ) : display ? (
       <div className="loading-icon">
-        <img className='loading-icon' src={loading_icon}/>
+        <img src={loading_icon}/>
       </div>) : null}
     </div>
   )

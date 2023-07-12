@@ -5,8 +5,12 @@
   background-color: #fff;
   -webkit-box-shadow: 0px 0px 10px #000;
           box-shadow: 0px 0px 10px #000;
+  overflow: hidden;
   -webkit-transition: height 0.2s ease 0s;
   transition: height 0.2s ease 0s;
+}
+.search.show {
+  height: 190px;
 }
 
 .search-place {
@@ -14,6 +18,9 @@
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .search-place input {
   font-family: "Raleway", sans-serif;
@@ -42,6 +49,12 @@
   border-radius: 50%;
   position: relative;
   background-color: #fff;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+.search-place button.hide {
+  width: 0;
+  opacity: 0;
 }
 .search-place button:focus {
   outline: none;
@@ -109,6 +122,7 @@
   margin: 0;
 }
 .info__descrip {
+  max-width: 60px;
   font-family: "Raleway", sans-serif;
   font-weight: 600;
   font-size: 12px;
@@ -194,21 +208,21 @@
 }
 @-webkit-keyframes loader {
   from {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  to {
     -webkit-transform: rotateZ(360deg);
             transform: rotateZ(360deg);
+  }
+  to {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
   }
 }
 @keyframes loader {
   from {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  to {
     -webkit-transform: rotateZ(360deg);
             transform: rotateZ(360deg);
+  }
+  to {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
   }
 }
