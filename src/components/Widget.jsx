@@ -13,12 +13,26 @@ const Widget = () => {
   const [weatherData, setWeatherData] = useState(null)
   const [display, setDisplay] = useState(false)
   const [firstState, setFirstState] = useState(true)
+  const [error, setError] = useState(null)
   const sityInput = useRef(null)
 
-  const getValue = () => {
+  // async function getData () {
+  //   try {
+  //     await getWeather(sityName).then(data => setWeatherData({
+  //       ...data,
+  //       icon_src: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`  
+  //     }))
+  //   } catch (error) {
+  //     setError(error)
+  //   }
+  // }
+
+  const getValue = async () => {
     setWeatherData(null)
     setFirstState(false)
     setDisplay(true)
+    const el = document.querySelector('.search')
+    el.classList.add('show')
 
     setTimeout(() => {
       const btn_arrows = document.querySelector('.btn_arrows')
@@ -26,16 +40,29 @@ const Widget = () => {
     }, 10)
 
     const sityName = sityInput.current.value.trim()
+
+    try {
+      await getWeather(sityName).then(data => setWeatherData({
+        ...data,
+        icon_src: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`  
+      }))
+     setError(null)
+    } catch (error) {
+      // console.log(error)
+      setError(error)
+    }
+    // const sityName = sityInput.current.value.trim()
     // getWeather(sityName).then(data => setWeatherData({
     //   ...data,
     //   icon_src: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`  
     // }))
-    setTimeout(() => {
-      setWeatherData('data')  
-    }, 1000);
+    
+    // setTimeout(() => {
+    //   setWeatherData('data')  
+    // }, 1000);
+    // getData()
 
-    const el = document.querySelector('.search')
-    el.classList.add('show')
+    
   }
   
   const clearData = (e) => {
@@ -73,43 +100,49 @@ const Widget = () => {
       </div>
 
       {weatherData && display ? (
-        // <div className="info">
+        <div className="info">
 
-        //   <div className="info__col">
-        //     <img className='info__weather-img' src={weatherData.icon_src} />
+          <div className="info__col">
+            <img className='info__weather-img' src={weatherData.icon_src} />
 
-        //     <div className="info__row">
-        //       <p className="info__cels">
-        //         {weatherData.main.temp.toString().slice(0,2)} °C
-        //       </p>
-        //       <p className="info__descrip">
-        //         {weatherData.weather[0].description}
-        //       </p>
-        //     </div>
+            <div className="info__row">
+              <p className="info__cels">
+                {weatherData.main.temp.toString().slice(0,2)} °C
+              </p>
+              <p className="info__descrip">
+                {weatherData.weather[0].description}
+              </p>
+            </div>
 
-        //   </div>
-        //   <div className="info-col">
-        //     <div className='info-humidity'>
-        //       <img src={humidity_icon} alt="Search"/>
-        //       <div className="info-humidity__col">
-        //         <p>{weatherData.main.humidity} %</p>
-        //         <span>Humidity</span>
-        //       </div>
-        //     </div>
-        //     <div className='info-wind'>
-        //       <img src={wind_icon} alt="Search"/>
-        //       <div className="info-wind__col">
-        //         <p>{weatherData.wind.speed} <span><b>Km/h</b></span></p>
-        //         <span>Wind speed</span>
-        //       </div>
-        //     </div>
-        //   </div>
-        // </div>
-        <h1>data</h1>
-      ) : display ? (
-      <div className="loading-icon">
-        <img src={loading_icon}/>
-      </div>) : null}
+          </div>
+          <div className="info-col">
+            <div className='info-humidity'>
+              <img src={humidity_icon} alt="Search"/>
+              <div className="info-humidity__col">
+                <p>{weatherData.main.humidity} %</p>
+                <span>Humidity</span>
+              </div>
+            </div>
+            <div className='info-wind'>
+              <img src={wind_icon} alt="Search"/>
+              <div className="info-wind__col">
+                <p>{weatherData.wind.speed} <span><b>Km/h</b></span></p>
+                <span>Wind speed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        // <h1>test mode</h1>
+      ) : (error ? <h3>
+        {error.message === 'Network Error' ? error.message + ' :(' : 'Sity not found :('} 
+      </h3> : (
+        display && (
+          <div className="loading-icon">
+            <img src={loading_icon}/>
+          </div>
+        )
+      ))
+      }
     </div>
   )
 }
