@@ -1,11 +1,10 @@
-import React, {useEffect, useRef, useState } from 'react'
+import React, {useRef, useState } from 'react'
 import './widget.css'
 import {getWeather} from '../services/http.service'
 import search_icon from '../assets/search.svg'
 import humidity_icon from '../assets/humidity.svg'
 import wind_icon from '../assets/wind.svg'
 import loading_icon from '../assets/loading.svg'
-import close_icon from '../assets/close.svg'
 import arrowUp_icon from '../assets/arrow-up.svg'
 import arrowDown_icon from '../assets/arrow-down.svg'
 
@@ -15,17 +14,6 @@ const Widget = () => {
   const [firstState, setFirstState] = useState(true)
   const [error, setError] = useState(null)
   const sityInput = useRef(null)
-
-  // async function getData () {
-  //   try {
-  //     await getWeather(sityName).then(data => setWeatherData({
-  //       ...data,
-  //       icon_src: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`  
-  //     }))
-  //   } catch (error) {
-  //     setError(error)
-  //   }
-  // }
 
   const getValue = async () => {
     setWeatherData(null)
@@ -48,21 +36,8 @@ const Widget = () => {
       }))
      setError(null)
     } catch (error) {
-      // console.log(error)
       setError(error)
     }
-    // const sityName = sityInput.current.value.trim()
-    // getWeather(sityName).then(data => setWeatherData({
-    //   ...data,
-    //   icon_src: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`  
-    // }))
-    
-    // setTimeout(() => {
-    //   setWeatherData('data')  
-    // }, 1000);
-    // getData()
-
-    
   }
   
   const clearData = (e) => {
@@ -132,7 +107,6 @@ const Widget = () => {
             </div>
           </div>
         </div>
-        // <h1>test mode</h1>
       ) : (error ? <h3>
         {error.message === 'Network Error' ? error.message + ' :(' : 'Sity not found :('} 
       </h3> : (
