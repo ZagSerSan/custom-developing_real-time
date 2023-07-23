@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './playground.css'
 import {winCombination} from '../utils/winCombination'
 
 const Playground = () => {
   const [gameOver, setGameOver] = useState(false)
   const [state, setState] = useState('X')
+  const [count, setCount] = useState(0)
+  const allButtons = document.querySelectorAll('.playground-space__btn')
+
+  useEffect(() => {
+    if (count === 9) {
+      setGameOver(true)
+      console.log('ничья')
+      allButtons.forEach(btn => {
+        btn.disabled = true
+        btn.classList.add('disabled')
+        btn.classList.add('game-over')
+      })
+    }
+  }, [count])
 
   const restartGame = () => {
     setGameOver(false)
-    const allButtons = document.querySelectorAll('.playground-space__btn')
+    setCount(0)
     allButtons.forEach(btn => {
       btn.textContent = ''
       btn.disabled = false
@@ -18,16 +32,16 @@ const Playground = () => {
   }
 
   const handleClick = ({target}) => {
-    if (target.textContent !== 'X' && target.textContent !== 'O') {
+    if (count !== 9 && target.textContent !== 'X' && target.textContent !== 'O') {
       target.textContent = state
       target.classList.add('disabled')
       setState(prev => prev === 'X' ? 'O' : 'X')
-      const allButtons = document.querySelectorAll('.playground-space__btn')
       const allValues = []
       allButtons.forEach(btn => {
         allValues.push(btn.textContent)
       })
       console.log(allValues)
+      setCount(prev => prev+1)
       const win = winCombination(allValues)
       if (win) {
         setGameOver(true)
@@ -43,9 +57,17 @@ const Playground = () => {
 
   return (
     <div className='playground'>
-      <h1>{!gameOver ? `Turn now: ${state}` : `${state} - is win!`}</h1>
+      <h2>{
+        !gameOver
+          ? ( count === 9
+            ? `No one won..`
+            : `Turn now: ${state}`
+          )
+          : `${state} - is win!`
+        }
+      </h2>
       {gameOver && <button onClick={restartGame} className='restart'>Play again</button>}
-      
+
       <div className="playground-space">
         <button onClick={handleClick} className='playground-space__btn border__btn-1'></button>
         <button onClick={handleClick} className='playground-space__btn border__btn-2'></button>
