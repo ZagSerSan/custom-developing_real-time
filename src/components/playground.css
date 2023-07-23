@@ -9,6 +9,9 @@
 }
 .playground-space__btn {
   width: 33%;
+  height: 166px;
+  font-size: 60px;
+  padding: 0;
   border-radius: 0;
   background-color: transparent;
   -webkit-transition: all 0.3s ease 0s;
@@ -21,42 +24,42 @@
 .playground-space__btn:focus {
   outline: 0;
 }
-.playground-space__btn.border_btn-1 {
+.playground-space__btn.border__btn-1 {
   border-right: 3px #2f2b5e solid;
   border-bottom: 3px #2f2b5e solid;
 }
-.playground-space__btn.border_btn-2 {
+.playground-space__btn.border__btn-2 {
   border-right: 3px #2f2b5e solid;
   border-left: 3px #2f2b5e solid;
   border-bottom: 3px #2f2b5e solid;
 }
-.playground-space__btn.border_btn-3 {
+.playground-space__btn.border__btn-3 {
   border-left: 3px #2f2b5e solid;
   border-bottom: 3px #2f2b5e solid;
 }
-.playground-space__btn.border_btn-4 {
+.playground-space__btn.border__btn-4 {
   border-top: 3px #2f2b5e solid;
   border-right: 3px #2f2b5e solid;
   border-bottom: 3px #2f2b5e solid;
 }
-.playground-space__btn.border_btn-5 {
+.playground-space__btn.border__btn-5 {
   border: 3px #2f2b5e solid;
 }
-.playground-space__btn.border_btn-6 {
+.playground-space__btn.border__btn-6 {
   border-top: 3px #2f2b5e solid;
   border-left: 3px #2f2b5e solid;
   border-bottom: 3px #2f2b5e solid;
 }
-.playground-space__btn.border_btn-7 {
+.playground-space__btn.border__btn-7 {
   border-top: 3px #2f2b5e solid;
   border-right: 3px #2f2b5e solid;
 }
-.playground-space__btn.border_btn-8 {
+.playground-space__btn.border__btn-8 {
   border-right: 3px #2f2b5e solid;
   border-left: 3px #2f2b5e solid;
   border-top: 3px #2f2b5e solid;
 }
-.playground-space__btn.border_btn-9 {
+.playground-space__btn.border__btn-9 {
   border-top: 3px #2f2b5e solid;
   border-left: 3px #2f2b5e solid;
 }

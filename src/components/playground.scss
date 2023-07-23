@@ -13,6 +13,9 @@ $border_size: 3px;
 
   &__btn {
     width: 33%;
+    height: 166px;
+    font-size: 60px;
+    padding: 0;
     border-radius: 0;
     background-color: transparent;
     transition: all 0.3s ease 0s;
@@ -26,42 +29,42 @@ $border_size: 3px;
     }
 
     &.border {
-      &_btn-1 {
+      &__btn-1 {
         border-right: $border_size $border_color solid;
         border-bottom: $border_size $border_color solid;
       }
-      &_btn-2 {
+      &__btn-2 {
         border-right: $border_size $border_color solid;
         border-left: $border_size $border_color solid;
         border-bottom: $border_size $border_color solid;
       }
-      &_btn-3 {
+      &__btn-3 {
         border-left: $border_size $border_color solid;
         border-bottom: $border_size $border_color solid;
       }
-      &_btn-4 {
+      &__btn-4 {
         border-top: $border_size $border_color solid;
         border-right: $border_size $border_color solid;
         border-bottom: $border_size $border_color solid;
       }
-      &_btn-5 {
+      &__btn-5 {
         border: $border_size $border_color solid;
       }
-      &_btn-6 {
+      &__btn-6 {
         border-top: $border_size $border_color solid;
         border-left: $border_size $border_color solid;
         border-bottom: $border_size $border_color solid;
       }
-      &_btn-7 {
+      &__btn-7 {
         border-top: $border_size $border_color solid;
         border-right: $border_size $border_color solid;
       }
-      &_btn-8 {
+      &__btn-8 {
         border-right: $border_size $border_color solid;
         border-left: $border_size $border_color solid;
         border-top: $border_size $border_color solid;
       }
-      &_btn-9 {
+      &__btn-9 {
         border-top: $border_size $border_color solid;
         border-left: $border_size $border_color solid;
       }
