@@ -3,11 +3,24 @@ import './playground.css'
 import {winCombination} from '../utils/winCombination'
 
 const Playground = () => {
+  const [gameOver, setGameOver] = useState(false)
   const [state, setState] = useState('X')
+
+  const restartGame = () => {
+    setGameOver(false)
+    const allButtons = document.querySelectorAll('.playground-space__btn')
+    allButtons.forEach(btn => {
+      btn.textContent = ''
+      btn.disabled = false
+      btn.classList.remove('disabled')
+      btn.classList.remove('game-over')
+    })
+  }
 
   const handleClick = ({target}) => {
     if (target.textContent !== 'X' && target.textContent !== 'O') {
       target.textContent = state
+      target.classList.add('disabled')
       setState(prev => prev === 'X' ? 'O' : 'X')
       const allButtons = document.querySelectorAll('.playground-space__btn')
       const allValues = []
@@ -15,13 +28,24 @@ const Playground = () => {
         allValues.push(btn.textContent)
       })
       console.log(allValues)
-      winCombination(allValues)
+      const win = winCombination(allValues)
+      if (win) {
+        setGameOver(true)
+        setState(win)
+        allButtons.forEach(btn => {
+          btn.disabled = true
+          btn.classList.add('disabled')
+          btn.classList.add('game-over')
+        })
+      }
     }
   }
 
   return (
     <div className='playground'>
-      <h2>Playground</h2>
+      <h1>{!gameOver ? `Turn now: ${state}` : `${state} - is win!`}</h1>
+      {gameOver && <button onClick={restartGame} className='restart'>Play again</button>}
+      
       <div className="playground-space">
         <button onClick={handleClick} className='playground-space__btn border__btn-1'></button>
         <button onClick={handleClick} className='playground-space__btn border__btn-2'></button>

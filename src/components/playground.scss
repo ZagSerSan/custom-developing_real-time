@@ -1,28 +1,59 @@
 $border_color: #2f2b5e;
+$game-over_color: #2e2a5e8a;
 $border_size: 3px;
 
-.playground {
+.restart {
+  background-color: #e6e6ff;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+
+  animation: restart linear forwards;
+  animation-duration: 0.2s;
+  animation-delay: 0s;
+
+  @keyframes restart {
+    0% {
+      height: 0;
+      font-size: 0;
+      margin-bottom: 0px;
+    }
+    100% {
+      font-size: 18px;
+      height: 50px;
+      margin-bottom: 30px;
+    }
+  }
 }
 
 .playground-space {
   display: flex;
   flex-wrap: wrap;
 
-  height: 500px;
   width: 500px;
 
   &__btn {
     width: 33%;
     height: 166px;
     font-size: 60px;
+    color: #2f2b5e;
     padding: 0;
     border-radius: 0;
     background-color: transparent;
     transition: all 0.3s ease 0s;
+    border: 0;
 
+    &.disabled {
+      background-color: transparent;
+      cursor: default;
+    }
     &:hover {
       background-color: #e6e6ff;
-      border: 0;
+
+      &.disabled {
+        background-color: transparent;
+        cursor: default;
+      }
     }
     &:focus {
       outline: 0;
@@ -68,6 +99,10 @@ $border_size: 3px;
         border-top: $border_size $border_color solid;
         border-left: $border_size $border_color solid;
       }
+    }
+    &.game-over {
+      color: $game-over_color;
+      border-color: $game-over_color;
     }
   }
 }
