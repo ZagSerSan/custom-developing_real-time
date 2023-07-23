@@ -1,0 +1,70 @@
+$border_color: #2f2b5e;
+$border_size: 3px;
+
+.playground {
+}
+
+.playground-space {
+  display: flex;
+  flex-wrap: wrap;
+
+  height: 500px;
+  width: 500px;
+
+  &__btn {
+    width: 33%;
+    border-radius: 0;
+    background-color: transparent;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+      background-color: #e6e6ff;
+      border: 0;
+    }
+    &:focus {
+      outline: 0;
+    }
+
+    &.border {
+      &_btn-1 {
+        border-right: $border_size $border_color solid;
+        border-bottom: $border_size $border_color solid;
+      }
+      &_btn-2 {
+        border-right: $border_size $border_color solid;
+        border-left: $border_size $border_color solid;
+        border-bottom: $border_size $border_color solid;
+      }
+      &_btn-3 {
+        border-left: $border_size $border_color solid;
+        border-bottom: $border_size $border_color solid;
+      }
+      &_btn-4 {
+        border-top: $border_size $border_color solid;
+        border-right: $border_size $border_color solid;
+        border-bottom: $border_size $border_color solid;
+      }
+      &_btn-5 {
+        border: $border_size $border_color solid;
+      }
+      &_btn-6 {
+        border-top: $border_size $border_color solid;
+        border-left: $border_size $border_color solid;
+        border-bottom: $border_size $border_color solid;
+      }
+      &_btn-7 {
+        border-top: $border_size $border_color solid;
+        border-right: $border_size $border_color solid;
+      }
+      &_btn-8 {
+        border-right: $border_size $border_color solid;
+        border-left: $border_size $border_color solid;
+        border-top: $border_size $border_color solid;
+      }
+      &_btn-9 {
+        border-top: $border_size $border_color solid;
+        border-left: $border_size $border_color solid;
+      }
+    }
+  }
+}

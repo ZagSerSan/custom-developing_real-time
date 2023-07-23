@@ -1,8 +1,8 @@
 import './App.css'
-import Widget from './components/Widget'
+import Playground from './components/Playground'
 
 function App() {
-  return <Widget />
+  return <Playground />
 }
 
 export default App
