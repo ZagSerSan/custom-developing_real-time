@@ -1,17 +1,25 @@
 const el_h1 = document.querySelector('h1')
-const initState = el_h1.innerText
+const initState = {
+  title: el_h1.innerText
+}
 
 function counter(element) {
   let counter = 0
+  const state = {
+    title: initState.title
+  }
 
   const setCounter = (count) => {
     counter = count
     element.innerHTML = `count is ${counter}`
+    state.title = initState.title  + (counter ? ` ${counter}` : '')
   }
   
   element.addEventListener('click', () => {
     setCounter(counter + 1)
-    el_h1.innerHTML = initState + ` ${counter}`
+    element.classList.toggle('width')
+
+    el_h1.innerHTML = state.title
   })
   setCounter(0)
 }
