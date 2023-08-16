@@ -28,6 +28,7 @@ const search = document.querySelector('.search')
 const searchBtn_open = document.querySelector('.search-btn-open')
 const searchBtn_close = document.querySelector('.search-btn-close')
 const searchMenu = document.querySelector('.search-menu')
+const searchInput = document.querySelector('.search-input')
 
 search.addEventListener('click', ({target}) => {
   console.log(target.dataset.search)
@@ -36,13 +37,19 @@ search.addEventListener('click', ({target}) => {
     searchMenu.classList.add('show')
     searchBtn_open.classList.remove('show')
     searchBtn_close.classList.add('show')
+    searchInput.focus()
   } else if (target.dataset.search === 'close') {
     searchMenu.classList.remove('show')
     searchBtn_close.classList.remove('show')
     searchBtn_open.classList.add('show')
   }
-})
 
+  setTimeout(() => {
+    searchMenu.classList.remove('show')
+    searchBtn_close.classList.remove('show')
+    searchBtn_open.classList.add('show')
+  }, 10000);
+})
 
 // const el_h1 = document.querySelector('h1')
 // const initState = {
