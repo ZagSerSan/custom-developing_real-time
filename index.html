@@ -2,24 +2,77 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./scss/style.css" rel="stylesheet" type="text/css">
+    <!-- <link href="./scss/style.css" rel="stylesheet" type="text/css"> -->
+    <link href="./dist/output.css" rel="stylesheet" type="text/css">
     <title>Zadaniem rekrutacyjne</title>
   </head>
   <body>
     <div class="wrapper">
+      <!-- Sprites -->
+      <svg style="display: none;">
+        <symbol id="search" viewBox="0 0 24 24">
+          <path d="M10.77 18.3C9.2807 18.3 7.82485 17.8584 6.58655 17.031C5.34825 16.2036 4.38311 15.0275 3.81318 13.6516C3.24325 12.2757 3.09413 10.7616 3.38468 9.30096C3.67523 7.84029 4.39239 6.49857 5.44548 5.44548C6.49857 4.39239 7.84029 3.67523 9.30096 3.38468C10.7616 3.09413 12.2757 3.24325 13.6516 3.81318C15.0275 4.38311 16.2036 5.34825 17.031 6.58655C17.8584 7.82485 18.3 9.2807 18.3 10.77C18.3 11.7588 18.1052 12.738 17.7268 13.6516C17.3484 14.5652 16.7937 15.3953 16.0945 16.0945C15.3953 16.7937 14.5652 17.3484 13.6516 17.7268C12.738 18.1052 11.7588 18.3 10.77 18.3ZM10.77 4.74999C9.58331 4.74999 8.42327 5.10189 7.43657 5.76118C6.44988 6.42046 5.68084 7.35754 5.22672 8.45389C4.77259 9.55025 4.65377 10.7566 4.88528 11.9205C5.11679 13.0844 5.68824 14.1535 6.52735 14.9926C7.36647 15.8317 8.43556 16.4032 9.59945 16.6347C10.7633 16.8662 11.9697 16.7474 13.0661 16.2933C14.1624 15.8391 15.0995 15.0701 15.7588 14.0834C16.4181 13.0967 16.77 11.9367 16.77 10.75C16.77 9.15869 16.1379 7.63257 15.0126 6.50735C13.8874 5.38213 12.3613 4.74999 10.77 4.74999Z" fill="#000000"/>
+          <path d="M20 20.75C19.9015 20.7504 19.8038 20.7312 19.7128 20.6934C19.6218 20.6557 19.5392 20.6001 19.47 20.53L15.34 16.4C15.2075 16.2578 15.1354 16.0697 15.1388 15.8754C15.1422 15.6811 15.221 15.4958 15.3584 15.3583C15.4958 15.2209 15.6812 15.1422 15.8755 15.1388C16.0698 15.1354 16.2578 15.2075 16.4 15.34L20.53 19.47C20.6704 19.6106 20.7493 19.8012 20.7493 20C20.7493 20.1987 20.6704 20.3893 20.53 20.53C20.4608 20.6001 20.3782 20.6557 20.2872 20.6934C20.1962 20.7312 20.0985 20.7504 20 20.75Z" fill="#000000"/>
+        </symbol>
+        <symbol id="arrow-down" viewBox="0 -4.5 20 20">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Dribbble-Light-Preview" transform="translate(-220.000000, -6684.000000)" fill="#000000">
+                <g id="icons" transform="translate(56.000000, 160.000000)">
+                    <path d="M164.292308,6524.36583 L164.292308,6524.36583 C163.902564,6524.77071 163.902564,6525.42619 164.292308,6525.83004 L172.555873,6534.39267 C173.33636,6535.20244 174.602528,6535.20244 175.383014,6534.39267 L183.70754,6525.76791 C184.093286,6525.36716 184.098283,6524.71997 183.717533,6524.31405 C183.328789,6523.89985 182.68821,6523.89467 182.29347,6524.30266 L174.676479,6532.19636 C174.285736,6532.60124 173.653152,6532.60124 173.262409,6532.19636 L165.705379,6524.36583 C165.315635,6523.96094 164.683051,6523.96094 164.292308,6524.36583" id="arrow_down-[#338]"></path>
+                </g>
+            </g>
+        </g>
+        </symbol>
+        <symbol id="close" viewBox="0 0 24 24">
+          <path d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z" fill="#0F0F0F"/>
+        </symbol>
+      </svg>
+
       <!-- Header -->
       <header class="header">
         <div class="container">
-          <div class="header__inner">
-            <h1>header</h1>
-            <p>some text</p>
-            <button id='btn'>0</button>
+          <div class="header__inner flex justify-between pt-6 pb-6">
+            <div class="header-logo">
+              <img src="./src/assets/header/logo.png" alt="company logo">
+            </div>
+            <nav class="header-nav">
+              <!-- <div>
+                <a href="#" data-scroll="offer" class="header-nav__link font-inter">Oferta ></a>
+              </div> -->
+              <div class="dropdown">
+                <!-- <div class="flex items-center"> -->
+                  <button class="dropdown__btn flex items-center" data-drop="btn">
+                    Oferta
+                    <svg data-drop="btn" class="m-0 ml-2 pt-1 w-3 h-3"><use data-drop="btn" xlink:href="#arrow-down"></use></svg>
+                  </button>
+                <!-- </div> -->
+                <div class="dropdown-inner" data-drop="menu">
+                  <a href="#" class="dropdown-inner__link" data-drop="link">Oferta 1</a>
+                  <a href="#" class="dropdown-inner__link" data-drop="link">Oferta 2</a>
+                  <a href="#" class="dropdown-inner__link" data-drop="link">Oferta 3</a>
+                </div>
+              </div>
+              <a href="#" data-scroll="about" class="header-nav__link">O firmie</a>
+              <a href="#" data-scroll="projects" class="header-nav__link">Realizacje</a>
+              <a href="#" data-scroll="contact" class="header-nav__link">Kontakt</a>
+
+              <div class="search">
+                <svg class="search-btn-open show" data-search="open"><use xlink:href="#search" data-search="open"></use></svg>
+                <svg class="search-btn-close" data-search="close"><use xlink:href="#close" data-search="close"></use></svg>
+                <div class="search-menu">
+                  <input type="text">
+                  <button type="submit" class="bg-cream hover:bg-creamHover">search</button>
+                </div>
+              </div>
+            </nav>
           </div>
         </div>
       </header>
         
+      <!-- ect... -->
+      <div class="ect" style="height: 700px;"></div>
+
     </div>
 
     <script type="module" src="./main.js"></script>
