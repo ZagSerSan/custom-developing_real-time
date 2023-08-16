@@ -632,6 +632,46 @@ a:hover {
   color: #1b5b31;
 }
 
+.footer {
+  background-color: #111;
+  color: #f5f0ec;
+}
+
+.footer-top {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #f5f0ec;
+  padding-bottom: 76px;
+  border-bottom: 2px #f5f0ec solid;
+}
+.footer-top button {
+  background-color: #1b5b31;
+  color: #f5f0ec;
+  border-radius: 200px;
+  padding: 12px 24px;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+.footer-top button:hover {
+  background-color: #f5f0ec;
+  color: #1b5b31;
+}
+
+.footer-bottom {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #f5f0ec;
+  padding: 62px 0px 120px;
+}
+.footer-bottom__social a:not(:last-child) {
+  margin-right: 48px;
+}
+.footer-bottom__contact a:not(:last-child) {
+  margin-right: 48px;
+}
+
 body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
