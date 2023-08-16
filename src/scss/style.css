@@ -415,6 +415,7 @@ a:hover {
   transition: height 0.2s ease 0s;
 }
 .offer-cards-item__btn svg {
+  stroke: #1b5b31;
   height: 20px;
   width: 20px;
   margin-left: 6px;
@@ -455,6 +456,110 @@ a:hover {
 }
 .offer-cards-item__btn:hover:after {
   height: 2px;
+}
+
+.about {
+  background-color: #1b5b31;
+}
+.about .about-inner {
+  max-width: 1440px;
+  margin: 0px auto;
+}
+
+.about-photo {
+  width: 50%;
+}
+.about-photo img {
+  width: 100%;
+}
+
+.about-content {
+  width: 50%;
+  padding: 0px 92px 0px 100px;
+  color: #f5f0ec;
+  text-align: left;
+}
+.about-content__suptitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #f5f0ec;
+  margin-bottom: 16px;
+}
+.about-content__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  color: #f5f0ec;
+  margin-bottom: 40px;
+}
+.about-content__text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #f5f0ec;
+  line-height: 1.5;
+  max-width: 510px;
+  margin-bottom: 72px;
+}
+.about-content__btn {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #f5f0ec;
+  max-width: 200px;
+  background-color: transparent;
+  padding: 12px 20px;
+  border: 2px #fff solid;
+  color: #fff;
+  border-radius: 30px;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+.about-content__btn svg {
+  stroke: #fff;
+  height: 20px;
+  width: 20px;
+  -webkit-transform: translate3d(0px, 3px, 0px);
+          transform: translate3d(0px, 3px, 0px);
+  margin-left: 5px;
+}
+.about-content__btn:hover {
+  color: #1b5b31;
+  background-color: #fff;
+}
+.about-content__btn:hover svg {
+  stroke: #1b5b31;
+  -webkit-animation: PoznajNas 0.8s linear infinite;
+          animation: PoznajNas 0.8s linear infinite;
+}
+@-webkit-keyframes PoznajNas {
+  0% {
+    -webkit-transform: translate3d(0px, 3px, 0px);
+            transform: translate3d(0px, 3px, 0px);
+  }
+  50% {
+    -webkit-transform: translate3d(5px, 3px, 0px);
+            transform: translate3d(5px, 3px, 0px);
+  }
+  100% {
+    -webkit-transform: translate3d(0px, 3px, 0px);
+            transform: translate3d(0px, 3px, 0px);
+  }
+}
+@keyframes PoznajNas {
+  0% {
+    -webkit-transform: translate3d(0px, 3px, 0px);
+            transform: translate3d(0px, 3px, 0px);
+  }
+  50% {
+    -webkit-transform: translate3d(5px, 3px, 0px);
+            transform: translate3d(5px, 3px, 0px);
+  }
+  100% {
+    -webkit-transform: translate3d(0px, 3px, 0px);
+            transform: translate3d(0px, 3px, 0px);
+  }
 }
 
 body {

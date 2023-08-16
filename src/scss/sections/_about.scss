@@ -1,0 +1,70 @@
+.about {
+  background-color: #1b5b31;
+  .about-inner {
+    max-width: 1440px;
+    margin: 0px auto;
+  }
+}
+.about-photo {
+  width: 50%;
+  img {
+    width: 100%;
+  }
+}
+.about-content {
+  width: 50%;
+  padding: 0px 92px 0px 100px;
+  color: #f5f0ec;
+  text-align: left;
+
+  &__suptitle {
+    @include fontFWSC("Inter", 400, 12px, #f5f0ec);
+    margin-bottom: 16px;
+  }
+  &__title {
+    @include fontFWSC("Montserrat", 500, 48px, #f5f0ec);
+    margin-bottom: 40px;
+  }
+  &__text {
+    @include fontFWSCL("Inter", 400, 16px, #f5f0ec, 1.5);
+    max-width: 510px;
+    margin-bottom: 72px;
+  }
+  &__btn {
+    @include fontFWSC("Inter", 400, 16px, #f5f0ec);
+    max-width: 200px;
+    background-color: transparent;
+    padding: 12px 20px;
+    border: 2px #fff solid;
+    color: #fff;
+    border-radius: 30px;
+    transition: all 0.2s ease 0s;
+
+    svg {
+      stroke: #fff;
+      height: 20px;
+      width: 20px;
+      transform: translate3d(0px, 3px, 0px);
+      margin-left: 5px;
+    }
+    &:hover {
+      color: #1b5b31;
+      background-color: #fff;
+      svg {
+        stroke: #1b5b31;
+        animation: PoznajNas 0.8s linear infinite;
+        @keyframes PoznajNas {
+          0% {
+            transform: translate3d(0px, 3px, 0px);
+          }
+          50% {
+            transform: translate3d(5px, 3px, 0px);
+          }
+          100% {
+            transform: translate3d(0px, 3px, 0px);
+          }
+        }
+      }
+    }
+  }
+}
