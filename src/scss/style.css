@@ -361,6 +361,21 @@ a:hover {
   padding: 45px;
   background-color: #fff;
   border-radius: 25px;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+  cursor: pointer;
+}
+.offer-cards-item:hover {
+  -webkit-transform: translate3d(-3px, -3px, 0px);
+          transform: translate3d(-3px, -3px, 0px);
+  -webkit-box-shadow: 3px 3px 8px #6e6e6e;
+          box-shadow: 3px 3px 8px #6e6e6e;
+}
+.offer-cards-item:active {
+  -webkit-transform: translate3d(0px, 0px, 0px);
+          transform: translate3d(0px, 0px, 0px);
+  -webkit-box-shadow: 0px 0px 0px #fff;
+          box-shadow: 0px 0px 0px #fff;
 }
 .offer-cards-item__icon {
   margin-bottom: 32px;
