@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -587,6 +587,49 @@ a:hover {
     -webkit-transform: translate3d(0px, 3px, 0px);
             transform: translate3d(0px, 3px, 0px);
   }
+}
+
+.instagram-inner {
+  padding: 120px 110px;
+}
+
+.instagram-inner-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  color: #f5f0ec;
+  letter-spacing: -2px;
+}
+.instagram-inner-title span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  color: #f5f0ec;
+  line-height: 120%;
+}
+
+.instagram-inner-right {
+  max-width: 170px;
+}
+.instagram-inner-right p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #f5f0ec;
+  line-height: 150%;
+}
+.instagram-inner-right button {
+  background-color: #1b5b31;
+  color: #f5f0ec;
+  border: 1px #f5f0ec solid;
+  border-radius: 200px;
+  padding: 12px 24px;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+.instagram-inner-right button:hover {
+  background-color: #f5f0ec;
+  color: #1b5b31;
 }
 
 body {

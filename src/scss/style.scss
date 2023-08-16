@@ -11,11 +11,12 @@
 @import "./sections/intro";
 @import "./sections/offer";
 @import "./sections/about";
+@import "./sections/instagram";
 // @import "footer.scss";
 
 //* <ШРИФТЫ>===============================================================================================
 //<Подключаем шрифты>=======================================================================================
-@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap");
 //<Иконочные шрифты>==========================================================================================
 //<Шрифт по умолчанию>==========================================================================================
 body {
