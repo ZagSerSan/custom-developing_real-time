@@ -14,12 +14,14 @@ headerNav.addEventListener('mouseover', ({target}) => {
   let type = target.dataset.drop
   if (type === 'btn' || type === 'menu' || type === 'link') {
     dropdownInner.classList.add('show')
+    document.querySelector('svg[data-drop]').classList.add('active')
   }
 })
 headerNav.addEventListener('mouseout', ({target}) => {
   let type = target.dataset.drop
   if (type === 'btn' || type === 'menu') {
     dropdownInner.classList.remove('show')
+    document.querySelector('svg[data-drop]').classList.remove('active')
   }
 })
 

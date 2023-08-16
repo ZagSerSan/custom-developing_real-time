@@ -28,6 +28,21 @@ a:hover {
   text-decoration: underline;
 }
 
+.header__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header__inner img {
+  display: block;
+}
+
 .header-nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,6 +88,10 @@ a:hover {
   font-size: 14px;
   color: #111111;
 }
+.dropdown__btn svg.active {
+  -webkit-transform: rotateZ(180deg);
+          transform: rotateZ(180deg);
+}
 .dropdown-inner {
   position: absolute;
   top: 100%;
@@ -115,6 +134,14 @@ a:hover {
   font-size: 14px;
   color: #111111;
   margin: 5px 0;
+  -webkit-transition: all 0.1s ease 0s;
+  transition: all 0.1s ease 0s;
+}
+.dropdown-inner__link:hover {
+  text-decoration: none;
+  -webkit-transform: translateX(5px);
+          transform: translateX(5px);
+  color: #525252;
 }
 
 .search {

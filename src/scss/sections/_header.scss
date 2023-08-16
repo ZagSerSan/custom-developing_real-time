@@ -1,4 +1,13 @@
 //====================================================================================================
+.header__inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	img {
+		display: block;
+	}
+}
+
 .header-nav {
 	display: flex;
 	align-items: center;
@@ -35,6 +44,9 @@
 
 	&__btn {
 		@include fontFWSC("Inter", 400, 14px, #111111);
+		svg.active {
+			transform: rotateZ(180deg);
+		}
 	}
 
 	&-inner {
@@ -69,6 +81,12 @@
 		&__link {
 			@include fontFWSC("Inter", 400, 14px, #111111);
 			margin: 5px 0;
+			transition: all 0.1s ease 0s;
+			&:hover {
+				text-decoration: none;
+				transform: translateX(5px);
+				color: #525252;
+			}
 		}
 	}
 }
