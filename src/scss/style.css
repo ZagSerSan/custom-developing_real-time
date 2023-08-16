@@ -93,7 +93,7 @@ a:hover {
   text-align: center;
   margin-top: 2px;
   padding: 0 10px;
-  background-color: rgba(220, 193, 171, 0.5058823529);
+  background-color: #dcc1ab;
   overflow: hidden;
   -webkit-transition: height 0.2s ease 0s, -webkit-transform 0.2s ease 0s;
   transition: height 0.2s ease 0s, -webkit-transform 0.2s ease 0s;
@@ -150,6 +150,7 @@ a:hover {
   -webkit-box-shadow: 1px 1px 5px #818181;
           box-shadow: 1px 1px 5px #818181;
   border: 1px #b4b4b4 solid;
+  background-color: #fff;
   border-radius: 5px;
   overflow: hidden;
   -webkit-transition: all 0.2s ease 0s;
@@ -223,6 +224,103 @@ a:hover {
 	}
 }
 */
+.intro {
+  background-color: #dcc1ab;
+}
+
+.intro-slider {
+  position: relative;
+  max-width: 1440px;
+  margin: 0px auto;
+}
+.intro-slider .slick-list {
+  height: 100%;
+}
+.intro-slider .slick-list .slick-track {
+  height: 100%;
+}
+
+.slick-slider {
+  position: relative;
+}
+
+.slick-arrow {
+  height: 96px;
+  width: 96px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #fff;
+  -webkit-transition: background-color 0.2s ease 0s;
+  transition: background-color 0.2s ease 0s;
+}
+.slick-arrow:hover {
+  background-color: #ccc;
+}
+
+.slick-next {
+  right: 0;
+}
+
+.slick-prev {
+  right: 96px;
+}
+
+.slider-item-content {
+  width: 50%;
+  padding-left: 89px;
+}
+.slider-item-content__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 60px;
+  color: #111111;
+  line-height: 70px;
+  margin-bottom: 44px;
+}
+.slider-item-content__text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #111111;
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 72px;
+}
+.slider-item-content__btn {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #111111;
+  background-color: transparent;
+  padding: 12px 20px;
+  border: 2px #1b5b31 solid;
+  color: #1b5b31;
+  border-radius: 30px;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+.slider-item-content__btn:not(:last-child) {
+  margin-right: 36px;
+}
+.slider-item-content__btn:hover {
+  color: #fff;
+  background-color: #1b5b31;
+}
+.slider-item-photo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  width: 50%;
+}
+.slider-item-photo img {
+  display: block;
+}
+
 body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -237,7 +335,7 @@ body {
 }
 
 .container {
-  max-width: 1170px;
+  max-width: 1262px;
   width: 100%;
   margin: 0 auto;
 }

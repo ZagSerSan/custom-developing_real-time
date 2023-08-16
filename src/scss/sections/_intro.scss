@@ -1,0 +1,85 @@
+.intro {
+  background-color: #dcc1ab;
+}
+
+.intro-slider {
+  position: relative;
+  // выравнивание под сетку
+  max-width: 1440px;
+  margin: 0px auto;
+
+  //! correct hight
+  .slick-list {
+    height: 100%;
+    .slick-track {
+      height: 100%;
+    }
+  }
+}
+
+.slick-slider {
+  position: relative;
+}
+.slick-arrow {
+  height: 96px;
+  width: 96px;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+
+  background-color: #fff;
+  transition: background-color 0.2s ease 0s;
+
+  &:hover {
+    background-color: #ccc;
+  }
+}
+.slick-next {
+  right: 0;
+}
+.slick-prev {
+  right: 96px;
+}
+
+.slider-item {
+  &-content {
+    width: 50%;
+    padding-left: 89px;
+    &__title {
+      @include fontFWSCL("Montserrat", 400, 60px, #111111, 70px);
+      margin-bottom: 44px;
+    }
+    &__text {
+      @include fontFWSCL("Inter", 400, 16px, #111111, 1.5);
+      margin: 0;
+      margin-bottom: 72px;
+    }
+    &__btn {
+      @include fontFWSC("Inter", 400, 16px, #111111);
+      background-color: transparent;
+      padding: 12px 20px;
+      border: 2px #1b5b31 solid;
+      color: #1b5b31;
+      border-radius: 30px;
+      transition: all 0.2s ease 0s;
+
+      &:not(:last-child) {
+        margin-right: 36px;
+      }
+      &:hover {
+        color: #fff;
+        background-color: #1b5b31;
+      }
+    }
+  }
+  &-photo {
+    display: flex;
+    justify-content: end;
+    width: 50%;
+    img {
+      display: block;
+    }
+  }
+}
