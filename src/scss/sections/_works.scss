@@ -1,0 +1,19 @@
+.works {
+  background-color: #dcc1ab;
+}
+
+.grid {
+  margin: 0 -20px;
+  padding-bottom: 44px;
+}
+.grid-item {
+  display: block;
+  width: 33.333%;
+  padding: 20px;
+  transition: opacity 0.2s ease 0s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

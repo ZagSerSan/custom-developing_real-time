@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link href="./scss/style.css" rel="stylesheet" type="text/css"> -->
     <!-- slick slider -->
     <link rel="stylesheet" type="text/css" href="./src/assets/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="./src/assets/slick/slick-theme.css"/>
@@ -203,8 +202,41 @@
       </section>
 
       <!-- works -->
-      <section style="height: 300px;">
-        works
+      <section class="works">
+        <div class="container">
+          <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 0 }'>
+
+            <div class="grid-item">
+              <img src="./src/assets/img/works/Photo1.png" alt="work photo">
+            </div>
+            <div class="grid-item">
+              <img src="./src/assets/img/works/Photo2.png" alt="work photo">
+            </div>
+            <div class="grid-item">
+              <img src="./src/assets/img/works/Photo3.png" alt="work photo">
+            </div>
+            <div class="grid-item">
+              <img src="./src/assets/img/works/Photo4.png" alt="work photo">
+            </div>
+            <div class="grid-item">
+              <img src="./src/assets/img/works/Photo5.png" alt="work photo">
+            </div>
+            <div class="grid-item">
+              <img src="./src/assets/img/works/Photo6.png" alt="work photo">
+            </div>
+            <div class="grid-item">
+              <img src="./src/assets/img/works/Photo7.png" alt="work photo">
+            </div>
+            <div class="grid-item">
+              <img src="./src/assets/img/works/Photo8.png" alt="work photo">
+            </div>
+            <div class="grid-item">
+              <img src="./src/assets/img/works/Photo9.png" alt="work photo">
+            </div>
+
+          </div>
+        </div>
+
       </section>
       
       <!-- footer -->
@@ -254,5 +286,7 @@
     <script type="text/javascript" src="./src/assets/slick/slick.min.js"></script>
     <!-- main js -->
     <script type="module" src="./main.js"></script>
+    <!-- masonry -->
+    <script defer src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   </body>
 </html>

@@ -303,7 +303,7 @@ a:hover {
   font-weight: 400;
   font-size: 60px;
   color: #111111;
-  line-height: 70px;
+  line-height: 1.16;
   margin-bottom: 44px;
 }
 .slider-item-content__text {
@@ -630,6 +630,27 @@ a:hover {
 .instagram-inner-right button:hover {
   background-color: #f5f0ec;
   color: #1b5b31;
+}
+
+.works {
+  background-color: #dcc1ab;
+}
+
+.grid {
+  margin: 0 -20px;
+  padding-bottom: 44px;
+}
+
+.grid-item {
+  display: block;
+  width: 33.333%;
+  padding: 20px;
+  -webkit-transition: opacity 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s;
+  cursor: pointer;
+}
+.grid-item:hover {
+  opacity: 0.8;
 }
 
 .footer {
