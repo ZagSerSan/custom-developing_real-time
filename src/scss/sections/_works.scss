@@ -17,3 +17,98 @@
     opacity: 0.8;
   }
 }
+
+.modal-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: #000000c9;
+
+  &.show {
+    top: 0;
+    .modal-window {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+.modal-window {
+  width: 100%;
+  max-width: 1000px;
+  height: 550px;
+  background-color: #fff;
+
+  transform: scale(0.5);
+  opacity: 0.5;
+  transition: all 0.2s ease 0s;
+}
+
+.modal-slider {
+  position: relative;
+
+  height: 100%;
+
+  &-slider-item {
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include fontFWSC("Inter", 400, 24px, #000);
+  }
+
+  .slick-list {
+    height: 100%;
+    width: 90%;
+    .slick-track {
+      height: 100%;
+      .slick-slide {
+        height: 100%;
+      }
+    }
+  }
+
+  .slick-dots {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+
+    display: flex;
+    //! отображение может хромать
+    justify-content: center;
+    flex-direction: column;
+
+    height: 100%;
+    width: 10%;
+    background-color: #1b5b31;
+
+    overflow: auto;
+
+    button {
+      background-color: #dcc1ab;
+      margin: 2px 0;
+      width: 100%;
+      height: 81px;
+      transition: background-color 0.2s ease 0s;
+    }
+
+    li {
+      &.slick-active button {
+        background-color: #c2ab98;
+      }
+      &:hover button {
+        background-color: #c2ab98;
+      }
+    }
+  }
+}

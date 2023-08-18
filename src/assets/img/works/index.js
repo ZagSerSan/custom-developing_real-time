@@ -9,13 +9,13 @@ import PHOTO_8 from './Photo8.png'
 import PHOTO_9 from './Photo9.png'
 
 export const photos = [
-  PHOTO_1,
-  PHOTO_2,
-  PHOTO_3,
-  PHOTO_4,
-  PHOTO_5,
-  PHOTO_6,
-  PHOTO_7,
-  PHOTO_8,
-  PHOTO_9
+  {_id: 1, src: PHOTO_1},
+  {_id: 2, src: PHOTO_2},
+  {_id: 3, src: PHOTO_3},
+  {_id: 4, src: PHOTO_4},
+  {_id: 5, src: PHOTO_5},
+  {_id: 6, src: PHOTO_6},
+  {_id: 7, src: PHOTO_7},
+  {_id: 8, src: PHOTO_8},
+  {_id: 9, src: PHOTO_9}
 ]

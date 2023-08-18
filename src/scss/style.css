@@ -653,6 +653,110 @@ a:hover {
   opacity: 0.8;
 }
 
+.modal-bg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7882352941);
+}
+.modal-bg.show {
+  top: 0;
+}
+.modal-bg.show .modal-window {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+}
+
+.modal-window {
+  width: 100%;
+  max-width: 1000px;
+  height: 550px;
+  background-color: #fff;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  opacity: 0.5;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+
+.modal-slider {
+  position: relative;
+  height: 100%;
+}
+.modal-slider-slider-item {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #000;
+}
+.modal-slider .slick-list {
+  height: 100%;
+  width: 90%;
+}
+.modal-slider .slick-list .slick-track {
+  height: 100%;
+}
+.modal-slider .slick-list .slick-track .slick-slide {
+  height: 100%;
+}
+.modal-slider .slick-dots {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  width: 10%;
+  background-color: #1b5b31;
+  overflow: auto;
+}
+.modal-slider .slick-dots button {
+  background-color: #dcc1ab;
+  margin: 2px 0;
+  width: 100%;
+  height: 81px;
+  -webkit-transition: background-color 0.2s ease 0s;
+  transition: background-color 0.2s ease 0s;
+}
+.modal-slider .slick-dots li.slick-active button {
+  background-color: #c2ab98;
+}
+.modal-slider .slick-dots li:hover button {
+  background-color: #c2ab98;
+}
+
 .footer {
   background-color: #111;
   color: #f5f0ec;
