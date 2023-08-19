@@ -1,5 +1,6 @@
 .intro {
   background-color: #dcc1ab;
+  margin-top: 93px;
 }
 
 .intro-slider {
@@ -27,7 +28,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1;
 
   background-color: #fff;
   transition: background-color 0.2s ease 0s;

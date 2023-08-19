@@ -1,14 +1,78 @@
-// scroll to page id
+// scroll to page id ========================================================
+const header = document.querySelector('.header')
 const headerNav = document.querySelector('.header-nav')
+const intro = document.querySelector('.intro')
+const about = document.querySelector('.about')
+const works = document.querySelector('.works')
+const footer = document.querySelector('.footer')
 
-headerNav.addEventListener('click', ({target}) => {
+let introOffset
+
+header.addEventListener('click', (event) => {
+  event.preventDefault()
+  const {target} = event
+
   if (target.dataset.scroll) {
-    console.log(target.dataset.scroll)
-    // todo -> scroll to page id
-  } else {}
+    if (target.dataset.scroll === 'logo') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    } else {
+      const sectionId = target.dataset.scroll
+      const element = document.querySelector(`#${sectionId}`)
+      let offsetTop = element.getBoundingClientRect().top + document.body.scrollTop
+
+      window.scrollBy({
+        top: Math.trunc(offsetTop) - 60,
+        behavior: 'smooth'
+      })
+    }
+  }
 })
 
-// dropdown
+setTimeout(() => {
+  introOffset = (intro.getBoundingClientRect().top + intro.clientHeight) - 350
+}, 100)
+
+window.addEventListener('scroll', () => {
+  let windowScrollY = Math.trunc(window.scrollY)
+
+  // fixed header
+  if (windowScrollY > introOffset) {
+    header.classList.add('fixed')
+  } else {
+    header.classList.remove('fixed')
+  }
+
+  // active link by scroll
+  if (
+    windowScrollY > about.offsetTop - 150
+    && windowScrollY < (about.offsetTop + (about.clientHeight - 300))
+  ) {
+    headerNav.querySelector('[data-scroll="about"]').classList.add('active')
+    headerNav.querySelector('[data-scroll="works"]').classList.remove('active')
+    headerNav.querySelector('[data-scroll="footer"]').classList.remove('active')
+  } else if (
+    windowScrollY > works.offsetTop - 150
+    && windowScrollY < (works.offsetTop + 950)
+  ) {
+    headerNav.querySelector('[data-scroll="works"]').classList.add('active')
+    headerNav.querySelector('[data-scroll="about"]').classList.remove('active')
+    headerNav.querySelector('[data-scroll="footer"]').classList.remove('active')
+  } else if (windowScrollY > (works.offsetTop + 950)) {
+    headerNav.querySelector('[data-scroll="footer"]').classList.add('active')
+    headerNav.querySelector('[data-scroll="works"]').classList.remove('active')
+    headerNav.querySelector('[data-scroll="about"]').classList.remove('active')
+  } else {
+    headerNav.querySelector('[data-scroll="footer"]').classList.remove('active')
+    headerNav.querySelector('[data-scroll="works"]').classList.remove('active')
+    headerNav.querySelector('[data-scroll="about"]').classList.remove('active')
+  }
+})
+
+// dropdown ========================================================
+
 const dropdownInner = document.querySelector('.dropdown-inner')
 headerNav.addEventListener('mouseover', ({target}) => {
   let type = target.dataset.drop
@@ -25,7 +89,8 @@ headerNav.addEventListener('mouseout', ({target}) => {
   }
 })
 
-// search
+// search ========================================================
+
 const search = document.querySelector('.search')
 const searchBtn_open = document.querySelector('.search-btn-open')
 const searchBtn_close = document.querySelector('.search-btn-close')
@@ -33,8 +98,6 @@ const searchMenu = document.querySelector('.search-menu')
 const searchInput = document.querySelector('.search-input')
 
 search.addEventListener('click', ({target}) => {
-  console.log(target.dataset.search)
-
   if (target.dataset.search === 'open') {
     searchMenu.classList.add('show')
     searchBtn_open.classList.remove('show')
@@ -50,33 +113,5 @@ search.addEventListener('click', ({target}) => {
     searchMenu.classList.remove('show')
     searchBtn_close.classList.remove('show')
     searchBtn_open.classList.add('show')
-  }, 10000);
+  }, 10000)
 })
-
-// const el_h1 = document.querySelector('h1')
-// const initState = {
-//   title: el_h1.innerText
-// }
-
-// function counter(element) {
-//   let counter = 0
-//   const state = {
-//     title: initState.title
-//   }
-
-//   const setCounter = (count) => {
-//     counter = count
-//     element.innerHTML = `count is ${counter}`
-//     state.title = initState.title  + (counter ? ` ${counter}` : '')
-//   }
-  
-//   element.addEventListener('click', () => {
-//     setCounter(counter + 1)
-//     element.classList.toggle('width')
-
-//     el_h1.innerHTML = state.title
-//   })
-//   setCounter(0)
-// }
-
-// counter(document.querySelector('#btn'))

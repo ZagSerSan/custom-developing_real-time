@@ -26,7 +26,7 @@ const msnry = new Masonry( grid, {
 //? Lays out all item elements. layout is useful when an item has changed size, and all items need to be laid out again.
 setTimeout(() => {
   msnry.layout()
-}, 10)
+}, 100)
 
 // modal
 const modalBg = document.querySelector('.modal-bg')

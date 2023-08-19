@@ -1,4 +1,19 @@
 //====================================================================================================
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	background-color: #fff;
+	&.fixed {
+		position: fixed;
+		.header__inner {
+			padding: 7px 0;
+		}
+	}
+}
+
 .header__inner {
 	display: flex;
 	justify-content: space-between;
@@ -31,6 +46,11 @@
 		}
 		&:hover {
 			text-decoration: none;
+			&:before {
+				width: 100%;
+			}
+		}
+		&.active {
 			&:before {
 				width: 100%;
 			}

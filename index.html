@@ -40,28 +40,23 @@
       <header class="header">
         <div class="container">
           <div class="header__inner pt-6 pb-6">
-            <img class="block" src="./src/assets/img/header/logo.png" alt="company logo">
-            <!-- </div> -->
+            <img data-scroll="logo" class="block cursor-pointer" src="./src/assets/img/header/logo.png" alt="company logo">
             <nav class="header-nav">
-              <!-- <div>
-                <a href="#" data-scroll="offer" class="header-nav__link font-inter">Oferta ></a>
-              </div> -->
+
               <div class="dropdown">
-                <!-- <div class="flex items-center"> -->
-                  <button class="dropdown__btn flex items-center" data-drop="btn">
-                    Oferta
-                    <svg data-drop="btn" class="m-0 ml-2 pt-1 w-3 h-3"><use data-drop="btn" xlink:href="#arrow-down"></use></svg>
-                  </button>
-                <!-- </div> -->
+                <button class="dropdown__btn flex items-center" data-drop="btn">
+                  Oferta
+                  <svg data-drop="btn" class="m-0 ml-2 pt-1 w-3 h-3"><use data-drop="btn" xlink:href="#arrow-down"></use></svg>
+                </button>
                 <div class="dropdown-inner" data-drop="menu">
                   <a href="#" class="dropdown-inner__link" data-drop="link">Oferta 1</a>
                   <a href="#" class="dropdown-inner__link" data-drop="link">Oferta 2</a>
                   <a href="#" class="dropdown-inner__link" data-drop="link">Oferta 3</a>
                 </div>
               </div>
-              <a href="#" data-scroll="about" class="header-nav__link">O firmie</a>
-              <a href="#" data-scroll="projects" class="header-nav__link">Realizacje</a>
-              <a href="#" data-scroll="contact" class="header-nav__link">Kontakt</a>
+              <a href="about" data-scroll="about" class="header-nav__link">O firmie</a>
+              <a href="works" data-scroll="works" class="header-nav__link">Realizacje</a>
+              <a href="footer" data-scroll="footer" class="header-nav__link">Kontakt</a>
 
               <div class="search">
                 <svg class="search-btn-open show" data-search="open"><use xlink:href="#search" data-search="open"></use></svg>
@@ -78,53 +73,51 @@
         
       <!-- intro... -->
       <section class="intro">
-        <!-- <div class="container"> -->
-          <div class="intro-slider">
+        <div class="intro-slider">
 
-            <div>
-              <div class="slider-item flex">
-                <div class="slider-item-content flex flex-col align-center justify-center">
-                  <h2 class="slider-item-content__title">
-                    Nowoczesna aranżacja
-                    <br/>
-                    Twojego ogrodu
-                  </h2>
-                  <p class="slider-item-content__text">Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka realizacji. Oferujemy kompleksowy zakres usługz indywidualnym podejściem do każdego projektu.</p>
-                  <div>
-                    <button class="slider-item-content__btn">Skontaktuj się z nami</button>
-                    <button class="slider-item-content__btn">Zobacz nasze realizacje</button>
-                  </div>
-                </div>
-
-                <div class="slider-item-photo">
-                  <img src="./src/assets/img/intro/slide-1.png" alt="slide 1">
+          <div id="slider-item-js">
+            <div class="slider-item flex">
+              <div class="slider-item-content flex flex-col align-center justify-center">
+                <h2 class="slider-item-content__title">
+                  Nowoczesna aranżacja
+                  <br/>
+                  Twojego ogrodu
+                </h2>
+                <p class="slider-item-content__text">Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka realizacji. Oferujemy kompleksowy zakres usługz indywidualnym podejściem do każdego projektu.</p>
+                <div>
+                  <button data-scroll="footer" class="slider-item-content__btn">Skontaktuj się z nami</button>
+                  <button data-scroll="works" class="slider-item-content__btn">Zobacz nasze realizacje</button>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <div class="slider-item flex">
-                <div class="slider-item-content flex flex-col align-center justify-center">
-                  <h2 class="slider-item-content__title">
-                    Nowoczesna aranżacja
-                    <br/>
-                    Twojego ogrodu
-                  </h2>
-                  <p class="slider-item-content__text">Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka realizacji. Oferujemy kompleksowy zakres usługz indywidualnym podejściem do każdego projektu.</p>
-                  <div>
-                    <button class="slider-item-content__btn">Skontaktuj się z nami</button>
-                    <button class="slider-item-content__btn">Zobacz nasze realizacje</button>
-                  </div>
-                </div>
-
-                <div class="slider-item-photo">
-                  <img src="./src/assets/img/intro/slide-1.png" alt="slide 1">
-                </div>
+              <div class="slider-item-photo">
+                <img src="./src/assets/img/intro/slide-1.png" alt="slide 1">
               </div>
             </div>
-
           </div>
-        <!-- </div> -->
+
+          <div id="slider-item-js">
+            <div class="slider-item flex">
+              <div class="slider-item-content flex flex-col align-center justify-center">
+                <h2 class="slider-item-content__title">
+                  Nowoczesna aranżacja
+                  <br/>
+                  Twojego ogrodu
+                </h2>
+                <p class="slider-item-content__text">Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka realizacji. Oferujemy kompleksowy zakres usługz indywidualnym podejściem do każdego projektu.</p>
+                <div>
+                  <button data-scroll="footer" class="slider-item-content__btn">Skontaktuj się z nami</button>
+                  <button data-scroll="works" class="slider-item-content__btn">Zobacz nasze realizacje</button>
+                </div>
+              </div>
+
+              <div class="slider-item-photo">
+                <img src="./src/assets/img/intro/slide-1.png" alt="slide 1">
+              </div>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <!-- offer -->
@@ -173,7 +166,7 @@
       </section>
       
       <!-- about -->
-      <section class="about">
+      <section class="about" id="about">
         <div class="about-inner flex">
           <div class="about-photo">
             <img src="./src/assets/img/about/photo.png" alt="about photo">
@@ -196,14 +189,18 @@
           <h4 class="instagram-inner-title">Zostańmy w kontakcie!<br>Znajdziesz nas na <span class="italic">Instagramie</span>.</h4>
           <div class="instagram-inner-right ml-16">
             <p class="mb-6">Śledź nasze najnowsze realizacje!</p>
-            <button>Instagram</button>
+            <a href="http://instagram.com" target="_blank">Instagram</a>
           </div>
         </div>
       </section>
 
       <!-- works -->
-      <section class="works">
+      <section class="works" id="works">
         <div class="container">
+          <div class="pl-24">
+            <p class="works__suptitle">Realizacje</p>
+            <h3 class="works__title p-0">Nasze <span>projekty</span></h3>
+          </div>
 
           <div class="grid"></div>
 
@@ -211,12 +208,13 @@
             <div class="modal-window">
               <div class="modal-slider"></div>
             </div>
+          </div>
         </div>
         
       </section>
       
       <!-- footer -->
-      <div class="footer py-20">
+      <div class="footer py-20" id="footer">
         <div class="container">
 
           <div>
@@ -231,13 +229,13 @@
             <div class="footer-bottom flex justify-between items-center">
               <div class="footer-bottom__social">
                 <a href="">Kontakt</a>
-                <a href="">Instagram</a>
-                <a href="">Facebook</a>
-                <a href="">LinkedIn</a>
+                <a href="http://instagram.com" target="_blank">Instagram</a>
+                <a href="http://facebook.com" target="_blank">Facebook</a>
+                <a href="http://linkedin.com" target="_blank">LinkedIn</a>
               </div>
               <div class="footer-bottom__contact">
-                <a href="">000-000-000</a>
-                <a href="">giarddesign@kontakt.pl</a>
+                <a href="tel:+48000000000">000-000-000</a>
+                <a href="mailto:giarddesign@kontakt.pl" target="_blank">giarddesign@kontakt.pl</a>
               </div>
             </div>
           </div>
