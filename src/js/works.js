@@ -9,7 +9,9 @@ const pasteGridItem = ({_id, src}) => {
   const gridItem_el = document.createElement('div')
   gridItem_el.className = 'grid-item'
   gridItem_el.innerHTML = `
-    <img src="${src}" data-modal=${_id} alt="work photo">
+    <div data-modal=${_id}>
+      <img src="${src}" alt="work photo">
+    </div>
   `
   return gridItem_el
 }
@@ -70,6 +72,7 @@ const pasteSliderItem = (id, sliders) => {
 
 // open modal window
 grid.addEventListener('click', ({target}) => {
+  console.log(target)
   let modalId = target.dataset.modal
 
   if (modalId) {
