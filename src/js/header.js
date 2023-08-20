@@ -1,16 +1,25 @@
-// scroll to page id ========================================================
+// search vars
+const search = document.querySelector('.search')
+const searchBtn_open = document.querySelector('.search-btn-open')
+const searchBtn_close = document.querySelector('.search-btn-close')
+const searchMenu = document.querySelector('.search-menu')
+const searchInput = document.querySelector('.search-input')
+// other vars
 const header = document.querySelector('.header')
 const headerNav = document.querySelector('.header-nav')
 const intro = document.querySelector('.intro')
 const about = document.querySelector('.about')
 const works = document.querySelector('.works')
 const footer = document.querySelector('.footer')
+const dropdownInner = document.querySelector('.dropdown-inner')
 
+// scroll to page id ========================================================
 let introOffset
 
 header.addEventListener('click', (event) => {
   event.preventDefault()
   const {target} = event
+  // console.log(target.type)
 
   if (target.dataset.scroll) {
     if (target.dataset.scroll === 'logo') {
@@ -29,6 +38,30 @@ header.addEventListener('click', (event) => {
       })
     }
   }
+  if (target.dataset.burger) {
+    if (document.querySelector('button[data-drop="btn"]')) {
+      document.querySelector('button[data-drop="btn"]').dataset.drop = 'burger-btn'
+    }
+    headerNav.classList.toggle('active')
+    // hide search
+    searchMenu.classList.remove('show')
+    searchBtn_close.classList.remove('show')
+    searchBtn_open.classList.add('show')
+  }
+  
+  let type = target.dataset.drop
+  if (type === 'burger-btn') {
+    dropdownInner.classList.toggle('show')
+  } else if (type === 'menu' || type === 'link') {
+    dropdownInner.classList.remove('show')
+    headerNav.classList.remove('active')
+  }
+
+  // clear search state*
+  if (target.type === 'submit') {
+    document.querySelector('.search-input').value = ''
+  }
+  
 })
 
 setTimeout(() => {
@@ -37,6 +70,9 @@ setTimeout(() => {
 
 window.addEventListener('scroll', () => {
   let windowScrollY = Math.trunc(window.scrollY)
+
+  // close burger menu
+  headerNav.classList.remove('active')
 
   // fixed header
   if (windowScrollY > introOffset) {
@@ -72,8 +108,6 @@ window.addEventListener('scroll', () => {
 })
 
 // dropdown ========================================================
-
-const dropdownInner = document.querySelector('.dropdown-inner')
 headerNav.addEventListener('mouseover', ({target}) => {
   let type = target.dataset.drop
   if (type === 'btn' || type === 'menu' || type === 'link') {
@@ -90,13 +124,6 @@ headerNav.addEventListener('mouseout', ({target}) => {
 })
 
 // search ========================================================
-
-const search = document.querySelector('.search')
-const searchBtn_open = document.querySelector('.search-btn-open')
-const searchBtn_close = document.querySelector('.search-btn-close')
-const searchMenu = document.querySelector('.search-menu')
-const searchInput = document.querySelector('.search-input')
-
 search.addEventListener('click', ({target}) => {
   if (target.dataset.search === 'open') {
     searchMenu.classList.add('show')
@@ -113,5 +140,5 @@ search.addEventListener('click', ({target}) => {
     searchMenu.classList.remove('show')
     searchBtn_close.classList.remove('show')
     searchBtn_open.classList.add('show')
-  }, 10000)
+  }, 15000)
 })
