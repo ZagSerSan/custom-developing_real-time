@@ -32,7 +32,7 @@ header.addEventListener('click', (event) => {
 })
 
 setTimeout(() => {
-  introOffset = (intro.getBoundingClientRect().top + intro.clientHeight) - 350
+  introOffset = (intro.offsetTop + intro.clientHeight) - 350
 }, 100)
 
 window.addEventListener('scroll', () => {

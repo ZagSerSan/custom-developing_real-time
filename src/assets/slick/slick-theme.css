@@ -53,10 +53,6 @@
 }
 
 /* Dots */
-.slick-dotted.slick-slider {
-  margin-bottom: 30px;
-}
-
 .slick-dots {
   position: absolute;
   list-style: none;
@@ -75,4 +71,16 @@
 }
 .slick-dots li button:hover, .slick-dots li button:focus {
   outline: none;
+}
+.slick-dots li button:before {
+  content: url("./eye.svg");
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease 0s;
+  transition: opacity 0.2s ease 0s;
 }

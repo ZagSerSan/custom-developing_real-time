@@ -49,7 +49,6 @@ const modalSliders = {
 
 // append items
 const pasteSliderItem = (id, sliders) => {
-  console.log(id, sliders)
 
   const cteateElement = (slider) => {
     const sliderItem_el = document.createElement('div')
@@ -63,7 +62,7 @@ const pasteSliderItem = (id, sliders) => {
     modalSlider_el.append(cteateElement(slider))
   })
   setTimeout(() => {
-    const test = modalSlider_el.querySelectorAll('button')
+    const test = modalSlider_el.querySelectorAll('button[role="tab"]')
     test.forEach((element, index) => {
       element.innerText = sliders[index]
     })
@@ -72,9 +71,10 @@ const pasteSliderItem = (id, sliders) => {
 
 // open modal window
 grid.addEventListener('click', ({target}) => {
-  console.log(target)
   let modalId = target.dataset.modal
+  let action = target.dataset.action
 
+  // open modal
   if (modalId) {
     modalBg.classList.add('show')
     body.style.overflow = 'hidden'
@@ -82,26 +82,51 @@ grid.addEventListener('click', ({target}) => {
     pasteSliderItem(modalId, modalSliders[modalId])
 
     $('.modal-slider').slick({
-      arrows: false,
+      arrows: true,
       dots: true
     })
   }
-})
-// close modal window
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    modalBg.classList.remove('show')
-    body.style.overflow = 'auto'
 
-    modalSlider_el.className = 'modal-slider'
-    modalSlider_el.innerHTML = ''
+  // rozwin func
+  if (action === 'rozwin') {
+    grid.classList.toggle('hide')
+
+    if (grid.className.includes('hide')) {
+      target.classList.remove('rozwin')
+      target.classList.add('zwinac')
+      target.innerHTML = `
+        Zwinąć
+        <svg class="zwinac"><use xlink:href="#arrow-down"></use></svg>
+      `
+    } else {
+      target.classList.remove('zwinac')
+      target.classList.add('rozwin')
+      target.innerHTML = `
+        Rozwiń
+        <svg class="zwinac"><use xlink:href="#arrow-down"></use></svg>
+      `
+    }
   }
 })
 
+// close modal window
+const closeModalBtn = document.querySelector('button[data-action="close/modal"]')
+function closeModal() {
+  modalBg.classList.remove('show')
+  body.style.overflow = 'auto'
 
+  modalSlider_el.className = 'modal-slider'
+  modalSlider_el.innerHTML = ''
+}
 
-
-
+closeModalBtn.addEventListener('click', () => {
+  closeModal()
+})
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeModal()
+  }
+})
 
 
 

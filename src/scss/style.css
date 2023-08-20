@@ -115,7 +115,7 @@ a:hover {
   top: 100%;
   left: 50%;
   z-index: 1;
-  width: 100px;
+  width: 120px;
   height: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -141,17 +141,16 @@ a:hover {
   border-radius: 5px;
 }
 .dropdown-inner.show {
-  height: 100px;
+  height: 120px;
   -webkit-transform: translateX(-50%) rotateY(0deg);
           transform: translateX(-50%) rotateY(0deg);
-  padding: 10px 10px;
 }
 .dropdown-inner__link {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #111111;
-  margin: 5px 0;
+  margin: 7px 0;
   -webkit-transition: all 0.1s ease 0s;
   transition: all 0.1s ease 0s;
 }
@@ -159,7 +158,7 @@ a:hover {
   text-decoration: none;
   -webkit-transform: translateX(5px);
           transform: translateX(5px);
-  color: #525252;
+  color: #1b5b31;
 }
 
 .search {
@@ -285,12 +284,10 @@ a:hover {
 .intro-slider .slick-list .slick-track {
   height: 100%;
 }
-
-.slick-slider {
+.intro-slider .slick-slider {
   position: relative;
 }
-
-.slick-arrow {
+.intro-slider .slick-arrow {
   height: 96px;
   width: 96px;
   position: absolute;
@@ -298,26 +295,23 @@ a:hover {
   right: 0;
   z-index: 1;
   background-color: #fff;
-  -webkit-transition: background-color 0.2s ease 0s;
-  transition: background-color 0.2s ease 0s;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
 }
-.slick-arrow:hover {
-  background-color: #ccc;
+.intro-slider .slick-arrow:hover {
+  background-color: #1b5b31;
 }
-
-.slick-next {
+.intro-slider .slick-next {
   right: 0;
 }
-
-.slick-prev {
+.intro-slider .slick-prev {
   right: 96px;
 }
-
-.slider-item-content {
+.intro-slider .slider-item-content {
   width: 50%;
   padding-left: 89px;
 }
-.slider-item-content__title {
+.intro-slider .slider-item-content__title {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 60px;
@@ -325,7 +319,7 @@ a:hover {
   line-height: 1.16;
   margin-bottom: 44px;
 }
-.slider-item-content__text {
+.intro-slider .slider-item-content__text {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -333,12 +327,19 @@ a:hover {
   line-height: 1.5;
   margin: 0;
   margin-bottom: 72px;
+  max-width: 480px;
 }
-.slider-item-content__btn {
+.intro-slider .slider-item-content__btn {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: #111111;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: transparent;
   padding: 12px 20px;
   border: 2px #1b5b31 solid;
@@ -347,14 +348,71 @@ a:hover {
   -webkit-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
 }
-.slider-item-content__btn:not(:last-child) {
+.intro-slider .slider-item-content__btn:not(:last-child) {
   margin-right: 36px;
 }
-.slider-item-content__btn:hover {
+.intro-slider .slider-item-content__btn:hover {
   color: #fff;
   background-color: #1b5b31;
 }
-.slider-item-photo {
+.intro-slider .slider-item-content__btn:hover svg {
+  fill: #fff;
+  -webkit-animation: zobaczRealizacjie 1s linear infinite;
+          animation: zobaczRealizacjie 1s linear infinite;
+}
+@-webkit-keyframes zobaczRealizacjie {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  25% {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+  50% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  75% {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+@keyframes zobaczRealizacjie {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  25% {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+  50% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  75% {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+.intro-slider .slider-item-content__btn svg {
+  fill: #1b5b31;
+  margin: 4px 0 0 4px;
+  width: 16px;
+  height: 16px;
+  -webkit-transition: fill 0.2s ease 0s;
+  transition: fill 0.2s ease 0s;
+}
+.intro-slider .slider-item-photo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -363,7 +421,7 @@ a:hover {
           justify-content: end;
   width: 50%;
 }
-.slider-item-photo img {
+.intro-slider .slider-item-photo img {
   display: block;
 }
 
@@ -678,8 +736,129 @@ a:hover {
 }
 
 .grid {
+  position: relative;
   margin: 0 -20px;
   padding: 76px 0 44px;
+}
+.grid.hide:after {
+  height: 0%;
+}
+.grid.hide button {
+  background-color: #dcc1ab;
+  border-color: #d8b395;
+  -webkit-box-shadow: 0px 0px 5px #000;
+          box-shadow: 0px 0px 5px #000;
+}
+.grid.hide button svg {
+  -webkit-transform: translateY(4px) rotateZ(180deg);
+          transform: translateY(4px) rotateZ(180deg);
+}
+.grid:after {
+  content: "";
+  width: 100%;
+  height: 65%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(90%, #dcc1ab));
+  background: linear-gradient(transparent 0%, #dcc1ab 90%);
+  -webkit-transition: height 0.2s ease 0s;
+  transition: height 0.2s ease 0s;
+}
+.grid button {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  z-index: 3;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 12px 22px;
+  border: 1px #000 solid;
+  border-radius: 30px;
+  -webkit-transition: background-color 0.2s ease 0s;
+  transition: background-color 0.2s ease 0s;
+}
+.grid button:hover {
+  border-color: #1b5b31;
+  color: #1b5b31;
+  background-color: #f0cfb4;
+}
+.grid button:hover.rozwin svg {
+  stroke: #1b5b31;
+  -webkit-animation: rozwin 0.8s linear infinite;
+          animation: rozwin 0.8s linear infinite;
+}
+@-webkit-keyframes rozwin {
+  0% {
+    -webkit-transform: translateY(4px);
+            transform: translateY(4px);
+  }
+  50% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  100% {
+    -webkit-transform: translateY(4px);
+            transform: translateY(4px);
+  }
+}
+@keyframes rozwin {
+  0% {
+    -webkit-transform: translateY(4px);
+            transform: translateY(4px);
+  }
+  50% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  100% {
+    -webkit-transform: translateY(4px);
+            transform: translateY(4px);
+  }
+}
+.grid button:hover.zwinac svg {
+  stroke: #1b5b31;
+  -webkit-animation: zwinac 0.8s linear infinite;
+          animation: zwinac 0.8s linear infinite;
+}
+@-webkit-keyframes zwinac {
+  0% {
+    -webkit-transform: translateY(4px) rotateZ(180deg);
+            transform: translateY(4px) rotateZ(180deg);
+  }
+  50% {
+    -webkit-transform: translateY(0px) rotateZ(180deg);
+            transform: translateY(0px) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: translateY(4px) rotateZ(180deg);
+            transform: translateY(4px) rotateZ(180deg);
+  }
+}
+@keyframes zwinac {
+  0% {
+    -webkit-transform: translateY(4px) rotateZ(180deg);
+            transform: translateY(4px) rotateZ(180deg);
+  }
+  50% {
+    -webkit-transform: translateY(0px) rotateZ(180deg);
+            transform: translateY(0px) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: translateY(4px) rotateZ(180deg);
+            transform: translateY(4px) rotateZ(180deg);
+  }
+}
+.grid button svg {
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+  width: 15px;
+  height: 15px;
+  margin-left: 8px;
 }
 
 .grid-item {
@@ -747,6 +926,7 @@ a:hover {
 }
 
 .modal-window {
+  position: relative;
   width: 100%;
   max-width: 1000px;
   height: 550px;
@@ -757,10 +937,64 @@ a:hover {
   -webkit-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
 }
+.modal-window button.close {
+  position: absolute;
+  top: 10px;
+  right: calc(10% + 15px);
+  z-index: 3;
+  width: 45px;
+  height: 45px;
+}
+.modal-window button.close svg {
+  fill: #1b5b31;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: fill 0.15s ease 0s;
+  transition: fill 0.15s ease 0s;
+}
+.modal-window button.close:hover svg {
+  fill: #dcc1ab;
+}
 
 .modal-slider {
   position: relative;
   height: 100%;
+}
+.modal-slider .slick-arrow {
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  bottom: 50%;
+  right: 0;
+  z-index: 1;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  background-color: transparent;
+  -webkit-transition: all 0.15s ease 0s;
+  transition: all 0.15s ease 0s;
+}
+.modal-slider .slick-arrow.slick-next {
+  right: calc(10% + 30px);
+  -webkit-transform: translateY(50%) rotateZ(45deg);
+          transform: translateY(50%) rotateZ(45deg);
+  border-top: 3px #1b5b31 solid;
+  border-right: 3px #1b5b31 solid;
+}
+.modal-slider .slick-arrow.slick-next:before {
+  content: "";
+}
+.modal-slider .slick-arrow.slick-prev {
+  left: 30px;
+  -webkit-transform: translateY(50%) rotateZ(-45deg);
+          transform: translateY(50%) rotateZ(-45deg);
+  border-top: 3px #1b5b31 solid;
+  border-left: 3px #1b5b31 solid;
+}
+.modal-slider .slick-arrow.slick-prev:before {
+  content: "";
+}
+.modal-slider .slick-arrow:hover {
+  border-color: #dcc1ab;
 }
 .modal-slider-slider-item {
   height: 100%;
@@ -809,18 +1043,24 @@ a:hover {
   overflow: auto;
 }
 .modal-slider .slick-dots button {
-  background-color: #dcc1ab;
+  position: relative;
   margin: 2px 0;
   width: 100%;
   height: 81px;
   -webkit-transition: background-color 0.2s ease 0s;
   transition: background-color 0.2s ease 0s;
+  background-color: #dcc1ab;
+  color: #a18d7d;
 }
-.modal-slider .slick-dots li.slick-active button {
-  background-color: #c2ab98;
+.modal-slider .slick-dots button:before {
+  width: 40%;
+  height: 40%;
 }
-.modal-slider .slick-dots li:hover button {
-  background-color: #c2ab98;
+.modal-slider .slick-dots li.slick-active button:before {
+  opacity: 1;
+}
+.modal-slider .slick-dots li:hover button:before {
+  opacity: 0.5;
 }
 
 .footer {

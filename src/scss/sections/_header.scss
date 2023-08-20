@@ -74,7 +74,7 @@
 		top: 100%;
 		left: 50%;
 		z-index: 1;
-		width: 100px;
+		width: 120px;
 		height: 0;
 
 		display: flex;
@@ -94,18 +94,18 @@
 		border-radius: 5px;
 
 		&.show {
-			height: 100px;
+			height: 120px;
 			transform: translateX(-50%) rotateY(0deg);
-			padding: 10px 10px;
+			// padding: 30px;
 		}
 		&__link {
 			@include fontFWSC("Inter", 400, 14px, #111111);
-			margin: 5px 0;
+			margin: 7px 0;
 			transition: all 0.1s ease 0s;
 			&:hover {
 				text-decoration: none;
 				transform: translateX(5px);
-				color: #525252;
+				color: #1b5b31;
 			}
 		}
 	}
