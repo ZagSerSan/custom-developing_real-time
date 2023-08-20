@@ -48,6 +48,9 @@ header.addEventListener('click', (event) => {
 
     target.classList.toggle('active')
     headerNav.classList.toggle('active')
+    if (dropdownInner.className.includes('show')) {
+      dropdownInner.classList.remove('show')
+    }
 
     // hide search
     searchMenu.classList.remove('show')
@@ -58,10 +61,12 @@ header.addEventListener('click', (event) => {
   let type = target.dataset.drop
   if (type === 'burger-btn') {
     dropdownInner.classList.toggle('show')
+    document.querySelector('svg[data-drop]').classList.toggle('active')
   } else if (type === 'menu' || type === 'link') {
     dropdownInner.classList.remove('show')
     headerNav.classList.remove('active')
     burger.classList.remove('active')
+    document.querySelector('svg[data-drop]').classList.remove('active')
   }
 
   // clear search state*
@@ -81,6 +86,8 @@ window.addEventListener('scroll', () => {
   // close burger menu
   headerNav.classList.remove('active')
   burger.classList.remove('active')
+  document.querySelector('svg[data-drop]').classList.remove('active')
+  dropdownInner.classList.remove('show')
 
   // fixed header
   if (windowScrollY > introOffset) {

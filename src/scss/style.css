@@ -352,11 +352,15 @@ a:hover {
             align-items: center;
     margin: 0 0 20px;
   }
-  .dropdown button {
+  .dropdown__btn {
     font-family: "Inter", sans-serif;
     font-weight: 400;
     font-size: 24px;
     color: #111111;
+  }
+  .dropdown__btn svg {
+    width: 20px;
+    height: 20px;
   }
   .dropdown-inner {
     width: 100%;
