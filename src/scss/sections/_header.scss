@@ -233,6 +233,37 @@
 			border-radius: 2px;
 		}
 	}
+	// burger.active
+	&.active .burger__icon {
+		background-color: transparent;
+		&:after {
+			top: 0;
+			transform: rotateZ(45deg);
+			animation: 0.2s afterWidth linear;
+			@keyframes afterWidth {
+				0% {
+					width: 0;
+				}
+				100% {
+					width: 100%;
+				}
+			}
+		}
+		&:before {
+			top: 0;
+			transform: rotateZ(-45deg);
+			width: 0;
+			animation: 0.15s beforeWidth 0.1s linear forwards;
+			@keyframes beforeWidth {
+				0% {
+					width: 0;
+				}
+				100% {
+					width: 100%;
+				}
+			}
+		}
+	}
 }
 
 // @media ====================================================================================================

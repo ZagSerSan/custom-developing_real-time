@@ -12,6 +12,7 @@ const about = document.querySelector('.about')
 const works = document.querySelector('.works')
 const footer = document.querySelector('.footer')
 const dropdownInner = document.querySelector('.dropdown-inner')
+const burger = document.querySelector('.burger')
 
 // scroll to page id ========================================================
 let introOffset
@@ -38,11 +39,16 @@ header.addEventListener('click', (event) => {
       })
     }
   }
+
+  // burger
   if (target.dataset.burger) {
     if (document.querySelector('button[data-drop="btn"]')) {
       document.querySelector('button[data-drop="btn"]').dataset.drop = 'burger-btn'
     }
+
+    target.classList.toggle('active')
     headerNav.classList.toggle('active')
+
     // hide search
     searchMenu.classList.remove('show')
     searchBtn_close.classList.remove('show')
@@ -55,6 +61,7 @@ header.addEventListener('click', (event) => {
   } else if (type === 'menu' || type === 'link') {
     dropdownInner.classList.remove('show')
     headerNav.classList.remove('active')
+    burger.classList.remove('active')
   }
 
   // clear search state*
@@ -73,6 +80,7 @@ window.addEventListener('scroll', () => {
 
   // close burger menu
   headerNav.classList.remove('active')
+  burger.classList.remove('active')
 
   // fixed header
   if (windowScrollY > introOffset) {
