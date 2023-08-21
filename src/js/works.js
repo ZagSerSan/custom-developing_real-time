@@ -28,7 +28,7 @@ const msnry = new Masonry( grid, {
 //? Lays out all item elements. layout is useful when an item has changed size, and all items need to be laid out again.
 setTimeout(() => {
   msnry.layout()
-}, 100)
+}, 1000)
 
 // modal
 const modalBg = document.querySelector('.modal-bg')
@@ -76,6 +76,7 @@ grid.addEventListener('click', ({target}) => {
 
   // open modal
   if (modalId) {
+    document.querySelector('.header').style.display = 'none'
     modalBg.classList.add('show')
     body.style.overflow = 'hidden'
 
@@ -121,10 +122,12 @@ function closeModal() {
 
 closeModalBtn.addEventListener('click', () => {
   closeModal()
+    document.querySelector('.header').style.display = 'block'
 })
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') {
     closeModal()
+    document.querySelector('.header').style.display = 'block'
   }
 })
 

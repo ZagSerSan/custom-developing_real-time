@@ -3,7 +3,6 @@ $(document).ready(function(){
 });
 
 const introBtns = document.querySelectorAll('#slider-item-js')
-// 'button[data-scroll="works"]'
 
 introBtns.forEach(btn => {
   btn.addEventListener('click', ({target}) => {

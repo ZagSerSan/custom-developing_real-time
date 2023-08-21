@@ -5,6 +5,7 @@ const searchBtn_close = document.querySelector('.search-btn-close')
 const searchMenu = document.querySelector('.search-menu')
 const searchInput = document.querySelector('.search-input')
 // other vars
+const body = document.querySelector('body')
 const header = document.querySelector('.header')
 const headerNav = document.querySelector('.header-nav')
 const intro = document.querySelector('.intro')
@@ -17,12 +18,40 @@ const burger = document.querySelector('.burger')
 // scroll to page id ========================================================
 let introOffset
 
+body.addEventListener('click', ({target}) => {
+  let targetClass = target.getAttribute("class")
+  // console.log('targetClass', targetClass)
+
+  if (targetClass && (
+        targetClass.includes('header-nav') ||
+        targetClass.includes('burger') ||
+        targetClass.includes('dropdown__btn') ||
+        targetClass.includes('search-btn-open') ||
+        targetClass.includes('search-btn-close') ||
+        targetClass.includes('search-input') ||
+        targetClass.includes('search-menu') ||
+        targetClass.includes('submit') ||
+        targetClass.includes('use')
+      )
+  ) {
+    // console.log('if');
+  } else {
+    burger.classList.remove('active')
+    body.style.overflow = 'auto'
+    headerNav.classList.remove('active')
+  }
+})
+
 header.addEventListener('click', (event) => {
   event.preventDefault()
   const {target} = event
-  // console.log(target.type)
+  // console.log(target)
 
   if (target.dataset.scroll) {
+
+    body.style.overflow = 'auto'
+    headerNav.classList.remove('active')
+
     if (target.dataset.scroll === 'logo') {
       window.scrollTo({
         top: 0,
@@ -33,6 +62,8 @@ header.addEventListener('click', (event) => {
       const element = document.querySelector(`#${sectionId}`)
       let offsetTop = element.getBoundingClientRect().top + document.body.scrollTop
 
+      burger.classList.remove('active')
+      body.style.overflow = 'auto'
       window.scrollBy({
         top: Math.trunc(offsetTop) - 60,
         behavior: 'smooth'
@@ -46,8 +77,13 @@ header.addEventListener('click', (event) => {
       document.querySelector('button[data-drop="btn"]').dataset.drop = 'burger-btn'
     }
 
+    body.style.overflow.includes('hidden')
+      ? body.style.overflow = 'auto'
+      : body.style.overflow = 'hidden'
+
     target.classList.toggle('active')
     headerNav.classList.toggle('active')
+
     if (dropdownInner.className.includes('show')) {
       dropdownInner.classList.remove('show')
     }
@@ -67,6 +103,7 @@ header.addEventListener('click', (event) => {
     headerNav.classList.remove('active')
     burger.classList.remove('active')
     document.querySelector('svg[data-drop]').classList.remove('active')
+    body.style.overflow = 'auto'
   }
 
   // clear search state*
@@ -84,10 +121,12 @@ window.addEventListener('scroll', () => {
   let windowScrollY = Math.trunc(window.scrollY)
 
   // close burger menu
-  headerNav.classList.remove('active')
-  burger.classList.remove('active')
-  document.querySelector('svg[data-drop]').classList.remove('active')
-  dropdownInner.classList.remove('show')
+  // if (!searchMenu.className.includes('show')) {
+    // headerNav.classList.remove('active')
+    // burger.classList.remove('active')
+  // }
+  // document.querySelector('svg[data-drop]').classList.remove('active')
+  // dropdownInner.classList.remove('show')
 
   // fixed header
   if (windowScrollY > introOffset) {
@@ -151,9 +190,9 @@ search.addEventListener('click', ({target}) => {
     searchBtn_open.classList.add('show')
   }
 
-  setTimeout(() => {
-    searchMenu.classList.remove('show')
-    searchBtn_close.classList.remove('show')
-    searchBtn_open.classList.add('show')
-  }, 15000)
+  // setTimeout(() => {
+  //   searchMenu.classList.remove('show')
+  //   searchBtn_close.classList.remove('show')
+  //   searchBtn_open.classList.add('show')
+  // }, 15000)
 })

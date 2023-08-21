@@ -354,26 +354,49 @@ a:hover {
     z-index: 2;
   }
   .header-nav {
-    display: none;
-    -webkit-box-shadow: -3px 0px 15px #292929;
-            box-shadow: -3px 0px 15px #292929;
-  }
-  .header-nav.active {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     z-index: 1;
     background-color: #dcc1ab;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    width: 60%;
     height: 100vh;
     padding-top: 106px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-box-shadow: -3px 0px 15px #292929;
+            box-shadow: -3px 0px 15px #292929;
+    width: 0;
+    opacity: 0;
+  }
+  .header-nav.active {
+    -webkit-animation: showMenu 0.07s linear forwards;
+            animation: showMenu 0.07s linear forwards;
+  }
+  @-webkit-keyframes showMenu {
+    0% {
+      opacity: 0;
+      width: 0;
+    }
+    100% {
+      opacity: 1;
+      width: 350px;
+    }
+  }
+  @keyframes showMenu {
+    0% {
+      opacity: 0;
+      width: 0;
+    }
+    100% {
+      opacity: 1;
+      width: 350px;
+    }
   }
   .header-nav.active .header-nav__link {
     font-family: "Inter", sans-serif;
@@ -840,6 +863,7 @@ a:hover {
   color: #1b5b31;
   margin-bottom: 16px;
 }
+
 .grid {
   position: relative;
   margin: 0 -20px;
@@ -1198,7 +1222,6 @@ a:hover {
   font-weight: 400;
   font-size: 16px;
   color: #f5f0ec;
-  padding-bottom: 76px;
   border-bottom: 2px #f5f0ec solid;
 }
 .footer-top button {
@@ -1219,15 +1242,7 @@ a:hover {
   font-weight: 400;
   font-size: 14px;
   color: #f5f0ec;
-  padding: 62px 0px 120px;
 }
-.footer-bottom__social a:not(:last-child) {
-  margin-right: 48px;
-}
-.footer-bottom__contact a:not(:last-child) {
-  margin-right: 48px;
-}
-
 body {
   font-family: "Inter", sans-serif;
   font-size: 16px;

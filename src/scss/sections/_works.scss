@@ -1,17 +1,7 @@
 .works {
-  // background-color: #dcc1ab;
-  // padding-top: 120px;
-
   &__suptitle {
     @include fontFWSC("Inter", 400, 12px, #1b5b31);
     margin-bottom: 16px;
-  }
-  &__title {
-    // @include fontFWSC("Montserrat", 500, 48px, #111111);
-  }
-  span {
-    // @include fontFWSC("Inter", 500, 48px, #111111);
-    // font-style: italic;
   }
 }
 

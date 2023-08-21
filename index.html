@@ -50,7 +50,7 @@
               <button class="burger__icon">_</button>
             </div>
 
-            <nav class="header-nav flex items-center justify-top">
+            <nav class="header-nav hideAnim flex items-center justify-top">
 
               <div class="dropdown">
                 <button class="dropdown__btn flex" data-drop="btn">
@@ -68,11 +68,11 @@
               <a href="footer" data-scroll="footer" class="header-nav__link">Kontakt</a>
 
               <div class="search">
-                <svg class="search-btn-open show" data-search="open"><use xlink:href="#search" data-search="open"></use></svg>
-                <svg class="search-btn-close" data-search="close"><use xlink:href="#close" data-search="close"></use></svg>
+                <svg class="search-btn-open show" data-search="open"><use class="use" xlink:href="#search" data-search="open"></use></svg>
+                <svg class="search-btn-close" data-search="close"><use class="use" xlink:href="#close" data-search="close"></use></svg>
                 <div class="search-menu">
                   <input class="search-input" type="text">
-                  <button type="submit" class="bg-cream hover:bg-creamHover">search</button>
+                  <button type="submit" class="submit bg-cream hover:bg-creamHover">search</button>
                 </div>
               </div>
             </nav>
@@ -256,34 +256,34 @@
       </section>
       
       <!-- footer -->
-      <div class="footer py-20" id="footer">
+      <div class="footer py-20 max-[760px]:pb-[30px] max-[710px]:pt-[0px]" id="footer">
         <div class="container">
 
           <div>
-            <div class="footer-top flex justify-between items-center">
+            <div class="footer-top pb-[76px] flex justify-between items-center max-[710px]:flex-col max-[710px]:py-[40px]">
               <img src="./src/assets/img/footer/site-logo.png" alt="logo">
-              <div class="flex items-center">
-                <p class="mr-6">Daj znać, co możemy dla Ciebie zrobić!</p>
+              <div class="flex items-center max-[710px]:mt-[20px] max-[580px]:flex-col">
+                <p class="mr-6 max-[580px]:mx-auto max-[580px]:mb-[40px] max-[580px]:text-center">Daj znać, co możemy dla Ciebie zrobić!</p>
                 <button>Skontaktuj się z nami</button>
               </div>
             </div>
 
-            <div class="footer-bottom flex justify-between items-center">
-              <div class="footer-bottom__social">
-                <a href="">Kontakt</a>
-                <a href="http://instagram.com" target="_blank">Instagram</a>
-                <a href="http://facebook.com" target="_blank">Facebook</a>
-                <a href="http://linkedin.com" target="_blank">LinkedIn</a>
+            <div class="footer-bottom pt-[62px] pb-[120px] flex justify-between items-center max-[760px]:flex-col max-[760px]:pt-[40px] max-[760px]:pb-[60px]">
+              <div class="footer-bottom__social max-[760px]:mb-[20px]">
+                <a class="mr-[48px] max-[480px]:mr-[10px]" href="">Kontakt</a>
+                <a class="mr-[48px] max-[480px]:mr-[10px]" href="http://instagram.com" target="_blank">Instagram</a>
+                <a class="mr-[48px] max-[480px]:mr-[10px]" href="http://facebook.com" target="_blank">Facebook</a>
+                <a class="" href="http://linkedin.com" target="_blank">LinkedIn</a>
               </div>
               <div class="footer-bottom__contact">
-                <a href="tel:+48000000000">000-000-000</a>
-                <a href="mailto:giarddesign@kontakt.pl" target="_blank">giarddesign@kontakt.pl</a>
+                <a class="mr-[48px] max-[480px]:mr-[10px]" href="tel:+48000000000">000-000-000</a>
+                <a class="" href="mailto:giarddesign@kontakt.pl" target="_blank">giarddesign@kontakt.pl</a>
               </div>
             </div>
           </div>
 
-          <div class="footer-copyright flex justify-between items-center">
-            <p class="m-0">Prawa zastrzeżone © 2022</p>
+          <div class="footer-copyright flex justify-between items-center max-[480px]:flex-col">
+            <p class="m-0 max-[480px]:mb-[10px]">Prawa zastrzeżone © 2022</p>
             <div class="flex items-center">
               made by
               <a href="">
