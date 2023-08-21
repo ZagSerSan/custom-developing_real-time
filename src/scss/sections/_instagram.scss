@@ -1,15 +1,4 @@
-.instagram-inner {
-  padding: 120px 110px;
-}
-.instagram-inner-title {
-  @include fontFWSC("Montserrat", 400, 40px, #f5f0ec);
-  letter-spacing: -2px;
-  span {
-    @include fontFWSCL("Montserrat", 500, 40px, #f5f0ec, 120%);
-  }
-}
 .instagram-inner-right {
-  max-width: 170px;
   p {
     @include fontFWSCL("Inter", 400, 16px, #f5f0ec, 150%);
   }

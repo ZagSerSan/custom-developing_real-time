@@ -28,14 +28,6 @@ a:hover {
   text-decoration: underline;
 }
 
-.header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  width: 100%;
-  background-color: #fff;
-}
 .header.fixed {
   position: fixed;
 }
@@ -43,29 +35,6 @@ a:hover {
   padding: 15px 0;
 }
 
-.header__inner {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.header__inner img {
-  display: block;
-}
-
-.header-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
 .header-nav__link {
   font-family: "Inter", sans-serif;
   font-weight: 400;
@@ -404,7 +373,7 @@ a:hover {
             flex-direction: column;
     width: 60%;
     height: 100vh;
-    padding-top: 76px;
+    padding-top: 106px;
   }
   .header-nav.active .header-nav__link {
     font-family: "Inter", sans-serif;
@@ -479,6 +448,11 @@ a:hover {
 .intro-slider .slick-list .slick-track {
   height: 100%;
 }
+@media (max-width: 870px) {
+  .intro-slider .slick-list .slick-track {
+    height: auto;
+  }
+}
 .intro-slider .slick-slider {
   position: relative;
 }
@@ -502,33 +476,16 @@ a:hover {
 .intro-slider .slick-prev {
   right: 96px;
 }
+.intro-slider .slider-item.container {
+  padding-right: 0;
+}
 .intro-slider .slider-item-content {
-  width: 50%;
-  padding-left: 89px;
+  z-index: 5;
 }
 .intro-slider .slider-item-content__title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  font-size: 60px;
-  color: #111111;
-  line-height: 1.16;
   margin-bottom: 44px;
 }
-.intro-slider .slider-item-content__text {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: #111111;
-  line-height: 1.5;
-  margin: 0;
-  margin-bottom: 72px;
-  max-width: 480px;
-}
 .intro-slider .slider-item-content__btn {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: #111111;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -537,14 +494,9 @@ a:hover {
           align-items: center;
   background-color: transparent;
   padding: 12px 20px;
-  border: 2px #1b5b31 solid;
-  color: #1b5b31;
   border-radius: 30px;
   -webkit-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
-}
-.intro-slider .slider-item-content__btn:not(:last-child) {
-  margin-right: 36px;
 }
 .intro-slider .slider-item-content__btn:hover {
   color: #fff;
@@ -608,20 +560,49 @@ a:hover {
   transition: fill 0.2s ease 0s;
 }
 .intro-slider .slider-item-photo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
-  width: 50%;
 }
 .intro-slider .slider-item-photo img {
-  display: block;
+  overflow: hidden;
+  z-index: 2;
+}
+.intro-slider .slider-item-photo:after {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  z-index: 3;
+  content: "";
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 870px) {
+  .intro-slider .slider-item-photo {
+    background: url("../../../src/assets/img/intro/slide-1.png");
+    background-size: cover;
+  }
+  .intro-slider .slider-item-photo img {
+    display: none;
+  }
 }
 
+@media (max-width: 870px) {
+  .intro-slider .slick-arrow {
+    height: 0px;
+    width: 0px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+    bottom: 200%;
+    background-color: transparent;
+  }
+  .intro-slider .slick-arrow:hover {
+    background-color: transparent;
+  }
+}
 .offer {
-  padding: 120px 0px 160px;
   background-color: #f5f0ec;
 }
 .offer__suptitle {
@@ -632,10 +613,6 @@ a:hover {
   margin-bottom: 16px;
 }
 .offer__title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 48px;
-  color: #111111;
   margin-bottom: 32px;
 }
 .offer__text {
@@ -647,16 +624,7 @@ a:hover {
   max-width: 710px;
 }
 
-.offer-cards {
-  margin: 0 -32px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .offer-cards-item {
-  width: 33%;
-  margin: 0 32px;
   padding: 45px;
   background-color: #fff;
   border-radius: 25px;
@@ -757,24 +725,22 @@ a:hover {
   height: 2px;
 }
 
-.about {
-  background-color: #1b5b31;
-}
 .about .about-inner {
   max-width: 1440px;
   margin: 0px auto;
 }
 
-.about-photo {
-  width: 50%;
-}
-.about-photo img {
+.about-photo:after {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  z-index: 3;
+  content: "";
   width: 100%;
+  height: 100%;
 }
 
 .about-content {
-  width: 50%;
-  padding: 0px 92px 0px 100px;
   color: #f5f0ec;
   text-align: left;
 }
@@ -784,22 +750,6 @@ a:hover {
   font-size: 12px;
   color: #f5f0ec;
   margin-bottom: 16px;
-}
-.about-content__title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 48px;
-  color: #f5f0ec;
-  margin-bottom: 40px;
-}
-.about-content__text {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: #f5f0ec;
-  line-height: 1.5;
-  max-width: 510px;
-  margin-bottom: 72px;
 }
 .about-content__btn {
   font-family: "Inter", sans-serif;
@@ -861,28 +811,6 @@ a:hover {
   }
 }
 
-.instagram-inner {
-  padding: 120px 110px;
-}
-
-.instagram-inner-title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  font-size: 40px;
-  color: #f5f0ec;
-  letter-spacing: -2px;
-}
-.instagram-inner-title span {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 40px;
-  color: #f5f0ec;
-  line-height: 120%;
-}
-
-.instagram-inner-right {
-  max-width: 170px;
-}
 .instagram-inner-right p {
   font-family: "Inter", sans-serif;
   font-weight: 400;
@@ -905,10 +833,6 @@ a:hover {
   color: #1b5b31;
 }
 
-.works {
-  background-color: #dcc1ab;
-  padding-top: 120px;
-}
 .works__suptitle {
   font-family: "Inter", sans-serif;
   font-weight: 400;
@@ -916,20 +840,6 @@ a:hover {
   color: #1b5b31;
   margin-bottom: 16px;
 }
-.works__title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 48px;
-  color: #111111;
-}
-.works span {
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 48px;
-  color: #111111;
-  font-style: italic;
-}
-
 .grid {
   position: relative;
   margin: 0 -20px;
@@ -1091,6 +1001,26 @@ a:hover {
 }
 .grid-item div:hover:after {
   opacity: 1;
+}
+@media (max-width: 1050px) {
+  .grid-item {
+    padding: 10px;
+  }
+}
+@media (max-width: 800px) {
+  .grid-item {
+    width: 50%;
+  }
+}
+@media (max-width: 500px) {
+  .grid-item {
+    width: 100%;
+    margin: 0px auto;
+  }
+  .grid-item img {
+    width: 100%;
+    padding: 0 20px;
+  }
 }
 
 .modal-bg {

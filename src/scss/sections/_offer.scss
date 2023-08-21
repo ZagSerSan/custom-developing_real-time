@@ -1,5 +1,4 @@
 .offer {
-  padding: 120px 0px 160px;
   background-color: #f5f0ec;
 
   &__suptitle {
@@ -7,7 +6,7 @@
     margin-bottom: 16px;
   }
   &__title {
-    @include fontFWSC("Montserrat", 500, 48px, #111111);
+    // @include fontFWSC("Montserrat", 500, 48px, #111111);
     margin-bottom: 32px;
   }
   &__text {
@@ -15,14 +14,8 @@
     max-width: 710px;
   }
 }
-.offer-cards {
-  margin: 0 -32px;
-  display: flex;
-}
-.offer-cards-item {
-  width: 33%;
 
-  margin: 0 32px;
+.offer-cards-item {
   padding: 45px;
   background-color: #fff;
   border-radius: 25px;

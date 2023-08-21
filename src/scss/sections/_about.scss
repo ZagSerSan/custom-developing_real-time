@@ -1,19 +1,25 @@
 .about {
-  background-color: #1b5b31;
+  // background-color: #1b5b31;
   .about-inner {
     max-width: 1440px;
     margin: 0px auto;
   }
 }
 .about-photo {
-  width: 50%;
   img {
+    // width: 100%;
+  }
+  &:after {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    z-index: 3;
+    content: "";
     width: 100%;
+    height: 100%;
   }
 }
 .about-content {
-  width: 50%;
-  padding: 0px 92px 0px 100px;
   color: #f5f0ec;
   text-align: left;
 
@@ -22,13 +28,13 @@
     margin-bottom: 16px;
   }
   &__title {
-    @include fontFWSC("Montserrat", 500, 48px, #f5f0ec);
-    margin-bottom: 40px;
+    // @include fontFWSC("Montserrat", 500, 48px, #f5f0ec);
+    // margin-bottom: 40px;
   }
   &__text {
-    @include fontFWSCL("Inter", 400, 16px, #f5f0ec, 1.5);
-    max-width: 510px;
-    margin-bottom: 72px;
+    // @include fontFWSCL("Inter", 400, 16px, #f5f0ec, 1.5);
+    // max-width: 510px;
+    // margin-bottom: 72px;
   }
   &__btn {
     @include fontFWSC("Inter", 400, 16px, #f5f0ec);

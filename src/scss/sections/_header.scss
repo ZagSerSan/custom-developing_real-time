@@ -1,11 +1,5 @@
 //====================================================================================================
 .header {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	width: 100%;
-	background-color: #fff;
 	&.fixed {
 		position: fixed;
 		.header__inner {
@@ -14,19 +8,7 @@
 	}
 }
 
-.header__inner {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	img {
-		display: block;
-	}
-}
-
 .header-nav {
-	display: flex;
-	align-items: center;
-
 	&__link {
 		@include fontFWSC("Inter", 400, 14px, #111111);
 		margin-right: 48px;
@@ -325,7 +307,7 @@
 
 			width: 60%;
 			height: 100vh;
-			padding-top: 76px;
+			padding-top: 106px;
 
 			.header-nav__link {
 				@include fontFWSC("Inter", 400, 24px, #111111);
