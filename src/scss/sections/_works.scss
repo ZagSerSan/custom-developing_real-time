@@ -269,10 +269,16 @@
   .slick-list {
     height: 100%;
     width: 90%;
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
     .slick-track {
       height: 100%;
       .slick-slide {
         height: 100%;
+        @media (max-width: 1000px) {
+          width: 100%;
+        }
       }
     }
   }

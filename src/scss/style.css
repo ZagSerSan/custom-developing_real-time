@@ -1175,11 +1175,21 @@ a:hover {
   height: 100%;
   width: 90%;
 }
+@media (max-width: 1000px) {
+  .modal-slider .slick-list {
+    width: 100%;
+  }
+}
 .modal-slider .slick-list .slick-track {
   height: 100%;
 }
 .modal-slider .slick-list .slick-track .slick-slide {
   height: 100%;
+}
+@media (max-width: 1000px) {
+  .modal-slider .slick-list .slick-track .slick-slide {
+    width: 100%;
+  }
 }
 .modal-slider .slick-dots {
   position: absolute;
