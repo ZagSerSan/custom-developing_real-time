@@ -1,14 +1,10 @@
 .about {
-  // background-color: #1b5b31;
   .about-inner {
     max-width: 1440px;
     margin: 0px auto;
   }
 }
 .about-photo {
-  img {
-    // width: 100%;
-  }
   &:after {
     position: absolute;
     top: 0;
@@ -26,15 +22,6 @@
   &__suptitle {
     @include fontFWSC("Inter", 400, 12px, #f5f0ec);
     margin-bottom: 16px;
-  }
-  &__title {
-    // @include fontFWSC("Montserrat", 500, 48px, #f5f0ec);
-    // margin-bottom: 40px;
-  }
-  &__text {
-    // @include fontFWSCL("Inter", 400, 16px, #f5f0ec, 1.5);
-    // max-width: 510px;
-    // margin-bottom: 72px;
   }
   &__btn {
     @include fontFWSC("Inter", 400, 16px, #f5f0ec);

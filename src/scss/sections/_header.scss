@@ -79,7 +79,6 @@
 		&.show {
 			height: 120px;
 			transform: translateX(-50%) rotateY(0deg);
-			// padding: 30px;
 		}
 		&__link {
 			@include fontFWSC("Inter", 400, 14px, #111111);
@@ -309,7 +308,6 @@
 		opacity: 0;
 
 		&.active {
-			// display: flex;
 			animation: showMenu 0.07s linear forwards;
 			@keyframes showMenu {
 				0% {
@@ -338,6 +336,7 @@
 					}
 				}
 			}
+
 			//search
 			.search {
 				position: relative;

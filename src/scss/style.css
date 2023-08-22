@@ -1104,6 +1104,11 @@ a:hover {
 .modal-window button.close:hover svg {
   fill: #dcc1ab;
 }
+@media (max-width: 1000px) {
+  .modal-window button.close {
+    right: 20px;
+  }
+}
 
 .modal-slider {
   position: relative;
@@ -1131,6 +1136,11 @@ a:hover {
 }
 .modal-slider .slick-arrow.slick-next:before {
   content: "";
+}
+@media (max-width: 1000px) {
+  .modal-slider .slick-arrow.slick-next {
+    right: 30px;
+  }
 }
 .modal-slider .slick-arrow.slick-prev {
   left: 30px;
@@ -1173,7 +1183,7 @@ a:hover {
 }
 .modal-slider .slick-dots {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
   z-index: 10;
   display: -webkit-box;
@@ -1211,6 +1221,31 @@ a:hover {
 .modal-slider .slick-dots li:hover button:before {
   opacity: 0.5;
 }
+@media (max-width: 1000px) {
+  .modal-slider .slick-dots {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 80px;
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .modal-slider .slick-dots button {
+    width: 80px;
+    height: 100%;
+    margin: 0 2px;
+  }
+}
+@media (max-width: 550px) {
+  .modal-slider .slick-dots {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+  }
+}
 
 .footer {
   background-color: #111;
@@ -1243,6 +1278,7 @@ a:hover {
   font-size: 14px;
   color: #f5f0ec;
 }
+
 body {
   font-family: "Inter", sans-serif;
   font-size: 16px;

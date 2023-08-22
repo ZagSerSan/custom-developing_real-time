@@ -29,6 +29,12 @@ const msnry = new Masonry( grid, {
 setTimeout(() => {
   msnry.layout()
 }, 1000)
+setTimeout(() => {
+  msnry.layout()
+}, 10000)
+setTimeout(() => {
+  msnry.layout()
+}, 20000)
 
 // modal
 const modalBg = document.querySelector('.modal-bg')
@@ -70,7 +76,10 @@ const pasteSliderItem = (id, sliders) => {
 }
 
 // open modal window
-grid.addEventListener('click', ({target}) => {
+grid.addEventListener('click', (event) => {
+  const {target} = event
+  event.stopPropagation()
+
   let modalId = target.dataset.modal
   let action = target.dataset.action
 
@@ -86,6 +95,7 @@ grid.addEventListener('click', ({target}) => {
       arrows: true,
       dots: true
     })
+
   }
 
   // rozwin func
@@ -115,6 +125,7 @@ const closeModalBtn = document.querySelector('button[data-action="close/modal"]'
 function closeModal() {
   modalBg.classList.remove('show')
   body.style.overflow = 'auto'
+  console.log('auto');
 
   modalSlider_el.className = 'modal-slider'
   modalSlider_el.innerHTML = ''

@@ -5,7 +5,6 @@
 
 .footer-top {
   @include fontFWSC("Inter", 400, 16px, #f5f0ec);
-  // padding-bottom: 76px;
   border-bottom: 2px #f5f0ec solid;
 
   button {
@@ -23,17 +22,4 @@
 }
 .footer-bottom {
   @include fontFWSC("Inter", 400, 14px, #f5f0ec);
-  // padding: 62px 0px 120px;
-  &__social {
-    a:not(:last-child) {
-      // margin-right: 48px;
-    }
-  }
-  &__contact {
-    a:not(:last-child) {
-      // margin-right: 48px;
-    }
-  }
-}
-.footer-copyright {
 }

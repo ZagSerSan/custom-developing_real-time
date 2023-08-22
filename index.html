@@ -46,18 +46,18 @@
 
             <img data-scroll="logo" class="block cursor-pointer" src="./src/assets/img/header/logo.png" alt="company logo">
             
-            <div class="burger" data-burger="true">
+            <div class="burger not-close" data-burger="true">
               <button class="burger__icon">_</button>
             </div>
 
-            <nav class="header-nav hideAnim flex items-center justify-top">
+            <nav class="header-nav not-close flex items-center justify-top">
 
               <div class="dropdown">
-                <button class="dropdown__btn flex" data-drop="btn">
+                <button class="not-close dropdown__btn flex" data-drop="btn">
                   Oferta
-                  <svg data-drop="btn" class="m-0 ml-2 pt-1 w-3 h-3"><use data-drop="btn" xlink:href="#arrow-down-dropdown"></use></svg>
+                  <svg data-drop="btn" class="not-close m-0 ml-2 pt-1 w-3 h-3"><use class="not-close" data-drop="btn" xlink:href="#arrow-down-dropdown"></use></svg>
                 </button>
-                <div class="dropdown-inner" data-drop="menu">
+                <div class="dropdown-inner not-close" data-drop="menu">
                   <a href="#" class="dropdown-inner__link" data-drop="link">Oferta 1</a>
                   <a href="#" class="dropdown-inner__link" data-drop="link">Oferta 2</a>
                   <a href="#" class="dropdown-inner__link" data-drop="link">Oferta 3</a>
@@ -67,12 +67,12 @@
               <a href="works" data-scroll="works" class="header-nav__link">Realizacje</a>
               <a href="footer" data-scroll="footer" class="header-nav__link">Kontakt</a>
 
-              <div class="search">
-                <svg class="search-btn-open show" data-search="open"><use class="use" xlink:href="#search" data-search="open"></use></svg>
-                <svg class="search-btn-close" data-search="close"><use class="use" xlink:href="#close" data-search="close"></use></svg>
-                <div class="search-menu">
-                  <input class="search-input" type="text">
-                  <button type="submit" class="submit bg-cream hover:bg-creamHover">search</button>
+              <div class="search not-close">
+                <svg class="search-btn-open show not-close" data-search="open"><use class="not-close" xlink:href="#search" data-search="open"></use></svg>
+                <svg class="search-btn-close not-close" data-search="close"><use class="not-close" xlink:href="#close" data-search="close"></use></svg>
+                <div class="search-menu not-close">
+                  <input class="search-input not-close" type="text">
+                  <button type="submit not-close" class="submit bg-cream hover:bg-creamHover">search</button>
                 </div>
               </div>
             </nav>
@@ -244,7 +244,7 @@
           </div>
 
           <div class="modal-bg">
-            <div class="modal-window">
+            <div class="modal-window max-[1070px]:w-[80%] max-[800px]:w-[90%]">
               <button class="close" data-action="close/modal">
                 <svg><use xlink:href="#close"></use></svg>
               </button>
@@ -300,8 +300,8 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script defer type="text/javascript" src="./src/assets/slick/slick.min.js"></script>
-        <!-- main js -->
-        <script type="module" src="./main.js"></script>
+    <!-- main js -->
+    <script type="module" src="./main.js"></script>
 
   </body>
 </html>

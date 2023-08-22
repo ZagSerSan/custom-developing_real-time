@@ -20,20 +20,8 @@ let introOffset
 
 body.addEventListener('click', ({target}) => {
   let targetClass = target.getAttribute("class")
-  // console.log('targetClass', targetClass)
 
-  if (targetClass && (
-        targetClass.includes('header-nav') ||
-        targetClass.includes('burger') ||
-        targetClass.includes('dropdown__btn') ||
-        targetClass.includes('search-btn-open') ||
-        targetClass.includes('search-btn-close') ||
-        targetClass.includes('search-input') ||
-        targetClass.includes('search-menu') ||
-        targetClass.includes('submit') ||
-        targetClass.includes('use')
-      )
-  ) {
+  if (targetClass && targetClass.includes('not-close')) {
     // console.log('if');
   } else {
     burger.classList.remove('active')

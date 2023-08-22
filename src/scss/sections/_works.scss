@@ -204,6 +204,12 @@
       }
     }
   }
+
+  @media (max-width: 1000px) {
+    button.close {
+      right: 20px;
+    }
+  }
 }
 
 .modal-slider {
@@ -231,6 +237,10 @@
       transform: translateY(50%) rotateZ(45deg);
       border-top: 3px #1b5b31 solid;
       border-right: 3px #1b5b31 solid;
+
+      @media (max-width: 1000px) {
+        right: 30px;
+      }
     }
     &.slick-prev {
       &:before {
@@ -269,7 +279,7 @@
 
   .slick-dots {
     position: absolute;
-    top: 0;
+    bottom: 0;
     right: 0;
     z-index: 10;
 
@@ -306,6 +316,20 @@
       &:hover button:before {
         opacity: 0.5;
       }
+    }
+    @media (max-width: 1000px) {
+      display: flex;
+      height: 80px;
+      width: 100%;
+      flex-direction: row;
+      button {
+        width: 80px;
+        height: 100%;
+        margin: 0 2px;
+      }
+    }
+    @media (max-width: 550px) {
+      justify-content: start;
     }
   }
 }
