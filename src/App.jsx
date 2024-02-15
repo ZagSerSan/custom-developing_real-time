@@ -11,8 +11,8 @@ function App() {
 
   console.log(
     days < 1
-    ? '0 days'
-    : '1 days'
+    ? '{days: 0}'
+    : '{days: 1}'
   )
 
   // let [timerDate, setTimerDate] = useState(
