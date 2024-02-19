@@ -1,74 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import moment from 'moment'
 
-const Timer = () => {
-  let [timerDate, setTimerDate] = useState()
+const Timer = ({duration}) => {
+  const [time, setTime] = useState(duration)
 
-  const dateNow = moment()
-  const endTime = moment('2024-02-19T17:00:00')
-  // const duration = moment.duration(endTime.diff(dateNow))
-  // const duration = moment.duration(endTime.diff(dateNow))
-  // const days = duration.asDays()
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(time - 1000)
+    }, 1000)
+  }, [time])
 
-  // console.log('duration._data :>> ', duration._data);
+  const getFormattedTime = (milliseconds) => {
+    let total_seconds = parseInt(Math.floor(time / 1000))
+    let total_minutes = parseInt(Math.floor(total_seconds / 60))
+    let total_hours = parseInt(Math.floor(total_minutes / 60))
+    let days = parseInt(Math.floor(total_hours / 24))
 
-  // console.log(
-  //   days < 1
-  //   ? '{days: 0}'
-  //   : '{days: 1}'
-  // )
-
-  let updateTimer = () => {
-    if (moment() > endTime) {
-      clearInterval(timer)
-      console.log('Timer is over')
-    } else {
-      const { _data: diffDate } = moment.duration(endTime.diff(dateNow))
-      setTimerDate(diffDate)
-      console.log('diffDate :>> ', diffDate.seconds)
-      // setTimerDate(moment(endTime.diff(Date.now())).format("DD:HH:mm:ss"))
-      // setTimerDate(moment(endTime - moment()))
-    }
+    let seconds = parseInt(Math.floor(total_seconds % 60))
+    let minutes = parseInt(Math.floor(total_minutes % 60))
+    let hours = parseInt(Math.floor(total_hours % 24))
+    return `${days} : ${hours} : ${minutes} : ${seconds}`
   }
-  let timer = setInterval(updateTimer, 1000)
-
-  // useEffect(() => {
-  //   console.log('date was updated')
-  // }, [moment()])
-
-
-  // let a = moment();
-  // let b = moment('2024-02-15T14:00:00');
-  // let diff_s = b.diff(a, 'seconds');
-  // console.log(
-  //   moment.utc(moment.duration(diff_s, "seconds").asMilliseconds()).format("DD hh:mm:ss")
-  // )
-
-  // useEffect(() => {
-    // console.log('dateNow=>', dateNow.format("DD HH:mm:ss"))
-    // console.log('endTime=>', endTime.format("DD HH:mm:ss"))
-    // let formated = duration.asDays() < 1
-    //   ? duration.format("HH:mm:ss")
-    //   : duration.format("DD HH:mm:ss")
-    // console.log('hours :>> ', hours)
-  // }, []);
-  // timerDate && console.log(timerDate.format("DD HH:mm:ss"))
-
-  // let updateTimer = () => {
-  //   if (Date.now() > endTime) {
-  //     clearInterval(timer)
-  //     console.log('Timer is over')
-  //   } else {
-  //     setTimerDate(moment.utc(endTime.diff(Date.now())).format("DD:HH:mm:ss"))
-  //     setTimerDate(moment(endTime - moment()))
-  //   }
-  // }
-  // let timer = setInterval(updateTimer, 1000)
 
   return (
     <div>
-      {/* <p>{timerDate}</p> */}
-      <p>timerDate</p>
+      <p>{getFormattedTime(time)}</p>
     </div>
   )
 }
