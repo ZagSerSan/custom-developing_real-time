@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from 'react'
 
-const Timer = ({duration}) => {
+const Timer = () => {
+  const endDate = new Date("2024-05-14T17:00:00")
+  const nowDate = Date.now()
+  const duration = endDate.getTime() - nowDate
+
+  // console.log('duration :>> ', duration)
+
   const [time, setTime] = useState(duration)
 
   useEffect(() => {
     setTimeout(() => {
-      setTime(time - 1000)
+      setTime(duration - 1000)
     }, 1000)
   }, [time])
 
-  const getFormattedTime = (milliseconds) => {
-    let total_seconds = parseInt(Math.floor(time / 1000))
-    let total_minutes = parseInt(Math.floor(total_seconds / 60))
-    let total_hours = parseInt(Math.floor(total_minutes / 60))
-    let days = parseInt(Math.floor(total_hours / 24))
+  const formatTime = (milisecundes) => {
+    // let days = Math.floor(milisecundes / 1000 / 60 / 60)
+    let hours = Math.floor(milisecundes / 1000 / 60 / 60)
+    let minutes = Math.floor(milisecundes / 1000 / 60 % 60)
+    let secundes = Math.floor(milisecundes / 1000 % 60)
 
-    let seconds = parseInt(Math.floor(total_seconds % 60))
-    let minutes = parseInt(Math.floor(total_minutes % 60))
-    let hours = parseInt(Math.floor(total_hours % 24))
-    return `${days} : ${hours} : ${minutes} : ${seconds}`
+    return `${hours} : ${minutes} : ${secundes}`
   }
 
   return (
     <div>
-      <p>{getFormattedTime(time)}</p>
+      <p>{formatTime(time)}</p>
     </div>
   )
 }
