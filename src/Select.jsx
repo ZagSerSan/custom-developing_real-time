@@ -4,6 +4,7 @@ import "./select.css"
 const Select = () => {
   const [endData, setEndData] = useState({})
 
+  // todo: сделать выбор даты через селекты относительно текущего месяца 
   return (
     <div className='select'>
       <h3>select data and time</h3>
