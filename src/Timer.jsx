@@ -34,7 +34,9 @@ const Timer = () => {
   return (
     <div>
       {Object.keys(timeObj).map(key => (
-        <p key={key}>{`${key}: ${timeObj[key]}`}</p>
+        <p key={key}>
+          {`${key}: ${timeObj[key]}`}
+        </p>
       ))}
       {/* <p>{formatTime(time)}</p> */}
     </div>
