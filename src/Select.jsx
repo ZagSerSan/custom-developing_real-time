@@ -21,7 +21,7 @@ const Select = () => {
         </div>
         <div className="select-item">
           <label htmlFor="year">year</label>
-          <input type="text" value={2024}/>
+          <input type="text" defaultValue={2024}/>
         </div>
       </div>
 

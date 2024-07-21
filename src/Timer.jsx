@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 const Timer = () => {
-  const endDate = new Date("2024-05-16T17:00:00")
+  const endDate = new Date("2024-07-21T19:00:00")
   const nowDate = Date.now()
   const duration = endDate.getTime() - nowDate
 
