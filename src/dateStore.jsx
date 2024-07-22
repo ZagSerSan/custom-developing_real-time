@@ -10,23 +10,11 @@ const dateStore = create((set) => ({
     // форматирование даты и её запись в стейт для передачи
     if (stringDate) {
       console.log('stringDate => ', stringDate)
+      set((state) => ({ endDate: 1}))
     } else {
       console.log('empty')
     }
-    // set((state) => ({ endDate: 1}))
   }),
 }))
 
 export default dateStore
-
-// удаление продукта
-// removeProduct: (productId) => set(async (state) => {
-//   try {
-//     const { data } = await ProductService.deleteProduct(productId)
-//     const updatedArray = state.productsEntity.filter(product => product._id !== productId)
-//     set((state) => ({ productsEntity: updatedArray}))
-//     toast.success("User has been removed!")
-//   } catch (error) {
-//     errorCatcher(error)
-//   }
-// }),

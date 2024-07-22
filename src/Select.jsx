@@ -4,10 +4,16 @@ import dateStore from './dateStore'
 
 const Select = () => {
   const [endData, setEndData] = useState({})
+
   const { getDateValue } = dateStore()
 
-  console.log(Boolean(getDateValue))
-  // console.log(getDateValue ? getDateValue : 'null')
+  const getDate = (params) => {
+    console.log('fucn')
+
+    getDateValue
+      ? getDateValue(params)
+      : console.log('no date')
+  }
 
   // todo: сделать выбор даты через селекты относительно текущего месяца 
   return (
@@ -42,17 +48,7 @@ const Select = () => {
         </div>
       </div>
 
-      {getDateValue
-        ? <button onClick={() => getDateValue('22.07.2024T19:20')}>select data</button>
-        : <button disabled={true}>select data</button>
-      }
-
-      {/* {getDateValue
-      ? (
-        <button onClick={getDateValue('22.07.2024T19:20')}>select data</button>
-      )
-      : (null)
-      } */}
+      <button onClick={() => getDate('22.07.2024T19:20')}>select data</button>
     </div>
   ) 
 }
