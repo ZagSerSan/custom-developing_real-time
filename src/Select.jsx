@@ -11,7 +11,8 @@ const Select = () => {
     setEndDate(selectedData)
   }
 
-  // todo: сделать выбор даты через селекты относительно текущего месяца 
+  // todo: сделать выбор даты через селекты
+  
   return (
     <div className='select'>
       {endDate
