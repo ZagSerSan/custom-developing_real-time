@@ -17,22 +17,37 @@ const Select = () => {
     setEndDate(selectedData)
   }
 
-  const toggleChange = (e) => {
+  const toggleChange = (e, ) => {
     const value = e.target.value
 
-    if (Number(value) && String(value).length <= 2) {
-      setSelectedData(prev => ({
-        ...prev,
-        day: value
-      }))
+    setSelectedData(prev => ({
+      ...prev,
+      day: value
+    }))
+      // todo - validate
+
+    // if (Number(value) && String(value).length <= 2) {
+      // if (Number(value) <= 31) {
+      //   setSelectedData(prev => ({
+      //     ...prev,
+      //     day: value
+      //   }))
+      // } else {
+      //   setSelectedData(prev => ({
+      //     ...prev,
+      //     day: 31
+      //   }))
+      // }
       // console.log(typeof value)
-    } else {
-      return
-    }
+    // } else {
+    //   return
+    // }
   }
 
   // todo: сделать выбор даты через селекты
-  
+  // + сделать рендер компонентов от состояния, object...map()..
+  // чтобы передать тип селекта для определения его в состоянии даты
+
   return (
     <div className='select'>
       {endDate
