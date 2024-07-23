@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import "./select.css"
 import dateStore from './dateStore'
+import useBearStore from './useBearStore'
 
 const Select = () => {
-  const [endData, setEndData] = useState({})
-
   const { getDateValue } = dateStore()
+  const [selectedData, setSelectedData] = useState({some: 'some'})
 
-  const getDate = (params) => {
-    console.log('fucn')
+  // test version
+  const { bears } = useBearStore()
+  const { increasePopulation } = useBearStore()
 
-    getDateValue
-      ? getDateValue(params)
-      : console.log('no date')
-  }
+  // const getDate = () => {
+  //   increasePopulation()
+  //   console.log('bears:', bears)
+
+  //   // getDateValue
+  //   //   ? getDateValue(selectedData)
+  //   //   : console.log('no date')
+  // }
 
   // todo: сделать выбор даты через селекты относительно текущего месяца 
   return (
@@ -48,7 +53,7 @@ const Select = () => {
         </div>
       </div>
 
-      <button onClick={() => getDate('22.07.2024T19:20')}>select data</button>
+      <button onClick={() => increasePopulation('some date')}>select data</button>
     </div>
   ) 
 }
