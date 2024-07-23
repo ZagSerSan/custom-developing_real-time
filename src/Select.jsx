@@ -5,10 +5,30 @@ import dateStore from './dateStore'
 const Select = () => {
   const { endDate, setEndDate } = dateStore()
   // состояние введённой даты
-  const [selectedData, setSelectedData] = useState('23.07.2024T14:30')
+  const [selectedData, setSelectedData] = useState({
+    day: 0,
+    month: 0,
+    year: 0,
+    hours: 0,
+    minutes: 0
+  })
 
   const setDate = () => {
     setEndDate(selectedData)
+  }
+
+  const toggleChange = (e) => {
+    const value = e.target.value
+
+    if (Number(value) && String(value).length <= 2) {
+      setSelectedData(prev => ({
+        ...prev,
+        day: value
+      }))
+      // console.log(typeof value)
+    } else {
+      return
+    }
   }
 
   // todo: сделать выбор даты через селекты
@@ -24,7 +44,11 @@ const Select = () => {
       <div className='select__wrapper'>
         <div className="select-item">
           <label htmlFor="day">day</label>
-          <input type="text" />
+          <input
+            type="text"
+            onChange={(e) => toggleChange(e)}
+            value={selectedData.day}
+          />
         </div>
         <div className="select-item">
           <label htmlFor="month">month</label>
