@@ -8,7 +8,7 @@ const Select = () => {
   // состояние введённой даты
   const [selectedData, setSelectedData] = useState({
     day: 1,
-    month: 1,
+    month: 7,
     year: 2024,
     hours: 0,
     minutes: 0
@@ -20,10 +20,9 @@ const Select = () => {
 
   const toggleChange = (e, type) => {
     const value = e.target.value
-    console.log('value', value)
 
     // todo - validate
-    if (validator(value, type)) {
+    if (validator(value, type, selectedData.year, selectedData.month)) {
       setSelectedData(prev => ({
         ...prev,
         [type]: value
