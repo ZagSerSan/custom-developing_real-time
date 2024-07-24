@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { formatTime } from './utils/formatTime'
 
 const Timer = () => {
-  const endDate = new Date("2024-07-23T19:00:00")
+  const endDate = new Date("2024-07-24T19:00:00")
   const nowDate = Date.now()
   const duration = endDate.getTime() - nowDate
 
@@ -15,25 +16,13 @@ const Timer = () => {
       setTime(duration - 1000)
     }, 1000)
   }, [time])
-
-  const formatTime = (milisecundes) => {
-    let days = Math.floor(milisecundes / 1000 / 60 / 60 / 24)
-    let hours = Math.floor(milisecundes / 1000 / 60 / 60 % 24)
-    let minutes = Math.floor(milisecundes / 1000 / 60 % 60)
-    let secundes = Math.floor(milisecundes / 1000 % 60)
-
-    // if (milisecundes <= 0 ) return 'timer is over!'
-    // return `${days} days | ${hours} hours | ${minutes} minutes | ${secundes} secundes`
-    if (milisecundes <= 0 ) return {}
-    return { days, hours, minutes, secundes }
-  }
   
   // console.log(formatTime(time))
   let timeObj = formatTime(time)
 
   return (
     <div>
-      {Object.keys(timeObj).map(key => (
+      {timeObj && Object.keys(timeObj).map(key => (
         <p key={key}>
           {`${key}: ${timeObj[key]}`}
         </p>

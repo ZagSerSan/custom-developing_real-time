@@ -3,9 +3,11 @@ import { create } from 'zustand'
 const dateStore = create((set) => ({
   endDate: '',
 
+  // setEndDate: (selectedDate) => set((state) => ({ endDate: selectedDate }))
+
   setEndDate: (selectedDate) => set((state) => {
     console.log('selectedDate', selectedDate)
-    return { endDate: selectedDate }
+    set((state) => ({ endDate: selectedDate }))
   }),
 }))
 
