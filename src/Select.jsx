@@ -21,7 +21,7 @@ const Select = () => {
   const toggleChange = (e, type) => {
     const value = e.target.value
 
-    // todo - validate
+    // todo - переделать на выпадающие селекты + validate
     if (validator(value, type, selectedData.year, selectedData.month)) {
       setSelectedData(prev => ({
         ...prev,
