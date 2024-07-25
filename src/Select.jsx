@@ -6,6 +6,20 @@ import DateSelect from './DateSelect'
 
 const Select = () => {
   const { endDate, setEndDate } = dateStore()
+
+  // получение текущей даты и создание сущности исходной даты для селекта
+  const currDate = new Date()
+  const maxDaysCount = (new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0)).getDate()
+
+  const [initialDate, setInitialDate] = useState({
+    year: {current: currDate.getFullYear(), max: currDate.getFullYear() + 1},
+    month: {current: currDate.getMonth() + 1, max: 12},
+    day: {current: currDate.getDate(), max: maxDaysCount},
+    hours: {current: currDate.getHours(), max: 23},
+    minutes: {current: currDate.getMinutes(), max: 59}
+  })
+  console.log('initialDate :>> ', initialDate)
+
   // состояние введённой даты
   const [selectedData, setSelectedData] = useState(
     {
@@ -23,14 +37,16 @@ const Select = () => {
 
   const toggleChange = (e, type) => {
     const value = e.target.value
+    console.log('type :>> ', type)
+    console.log('value :>> ', value)
 
     // todo - переделать на выпадающие селекты + validate
-    if (validator(value, type, selectedData.year, selectedData.month)) {
-      setSelectedData(prev => ({
-        ...prev,
-        [type]: value
-      }))
-    }
+    // if (validator(value, type, selectedData.year, selectedData.month)) {
+    //   setSelectedData(prev => ({
+    //     ...prev,
+    //     [type]: value
+    //   }))
+    // }
 
   }
 
@@ -56,7 +72,7 @@ const Select = () => {
           <div>
             <p>{key}</p>
 
-            <select>
+            <select onChange={(e) => toggleChange(e, key)} value={selectedData.day}>
               <option value="">---</option>
               <option value="oneOption">One option</option>
               <option value="twoOption">Two option</option>
