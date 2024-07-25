@@ -18,6 +18,7 @@ const Select = () => {
     hours: {current: currDate.getHours(), max: 23},
     minutes: {current: currDate.getMinutes(), max: 59}
   })
+  // todo - на этой сущности построить селект и её изменение и измен селекта
   console.log('initialDate :>> ', initialDate)
 
   // состояние введённой даты
