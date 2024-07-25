@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./select.css"
 import dateStore from './dateStore'
 import { validator } from './utils/validator'
+import DateSelect from './DateSelect'
 
 const Select = () => {
   const { endDate, setEndDate } = dateStore()
   // состояние введённой даты
-  const [selectedData, setSelectedData] = useState({
-    day: 1,
-    month: 7,
-    year: 2024,
-    hours: 0,
-    minutes: 0
-  })
+  const [selectedData, setSelectedData] = useState(
+    {
+      day: 1,
+      month: 7,
+      year: 2024,
+      hours: 0,
+      minutes: 0
+    }
+  )
 
   const setDate = () => {
     setEndDate(selectedData)
@@ -44,7 +47,24 @@ const Select = () => {
 
       {/* день/месяц/год */}
       <div className='select__wrapper'>
-        <div className="select-item">
+
+        {Object.keys(selectedData).map(key => (
+          // <p>{key}: {selectedData[key]}</p>
+          // todo - вывод переиспол. компонента селекта
+          // <DateSelect selectedData={selectedData}/>
+
+          <div>
+            <p>{key}</p>
+
+            <select>
+              <option value="">---</option>
+              <option value="oneOption">One option</option>
+              <option value="twoOption">Two option</option>
+            </select>
+          </div>
+        ))}
+
+        {/* <div className="select-item">
           <label htmlFor="day">day</label>
           <input
             type="text"
@@ -67,11 +87,11 @@ const Select = () => {
             onChange={(e) => toggleChange(e, 'year')}
             value={selectedData.year}
           />
-        </div>
+        </div> */}
       </div>
 
       {/* часы/минуты */}
-      <div className='select__wrapper'>
+      {/* <div className='select__wrapper'>
         <div className="select-item">
           <label htmlFor="hours">hours</label>
           <input type="text" />
@@ -80,7 +100,7 @@ const Select = () => {
           <label htmlFor="minutes">minutes</label>
           <input type="text" />
         </div>
-      </div>
+      </div> */}
 
       <button onClick={setDate}>select data</button>
     </div>
