@@ -5,6 +5,8 @@ import dateStore from './dateStore'
 // import DateSelect from './DateSelect'
 import { arrayFromNum } from './utils/arrayFromNum'
 
+// todo 3 - ограничить выбор прошедшей даты
+
 const Select = () => {
   const { endDate, setEndDate } = dateStore()
   // получение текущей даты и создание сущности исходной даты для селекта
@@ -52,7 +54,7 @@ const Select = () => {
   })
 
   const setDate = () => {
-    // todo - финальная передача endDate в стор для таймера
+    // todo 1 - финальная передача endDate в стор для таймера
     // setEndDate(selectedData)
     console.log('selectedData :>> ', selectedData)
   }
@@ -60,7 +62,7 @@ const Select = () => {
   const toggleChange = (e, type) => {
     const value = e.target.value
 
-    // todo - переделать на выпадающие селекты + validate
+    // todo 2 - validate
     // if (validator(value, type, selectedData.year, selectedData.month)) {
       setSelectedData(prev => ({
         ...prev,
