@@ -10,6 +10,7 @@ const Select = () => {
 
   // получение текущей даты и создание сущности исходной даты для селекта
   const currDate = new Date()
+  // todo - изменение макс кол-ва дней в зависимости от выбранного месяца
   const maxDaysCount = (new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0)).getDate()
 
   const [initialDate, setInitialDate] = useState({
@@ -28,83 +29,66 @@ const Select = () => {
     hours: {current: currDate.getHours(), options: arrayFromNum(23)},
     minutes: {current: currDate.getMinutes(), options: arrayFromNum(59)}
   })
-  // todo - на этой сущности построить селект и её изменение и измен селекта
-  // console.log('initialDate :>> ', initialDate)
 
   // состояние введённой даты
   const [selectedData, setSelectedData] = useState(
     {
-      day: 0,
-      month: 0,
-      year: 0,
-      hours: 0,
-      minutes: 0
+      day: initialDate.day.current,
+      month: initialDate.month.current,
+      year: initialDate.year.current,
+      hours: initialDate.hours.current,
+      minutes: initialDate.minutes.current
     }
   )
 
   const setDate = () => {
-    setEndDate(selectedData)
+    // todo - финальная передача endDate в стор для таймера
+    // setEndDate(selectedData)
+    console.log('selectedData :>> ', selectedData)
   }
 
   const toggleChange = (e, type) => {
     const value = e.target.value
-    // console.log('type :>> ', type)
-    // console.log('value :>> ', value)
-
-    
-    // setSelectedData(prev => ({
-      //   ...prev,
-      //   [type]: value
-      // }))
 
     // todo - переделать на выпадающие селекты + validate
     // if (validator(value, type, selectedData.year, selectedData.month)) {
-      // setSelectedData(prev => ({
-      //   ...prev,
-      //   [type]: value
-      // }))
+      setSelectedData(prev => ({
+        ...prev,
+        [type]: value
+      }))
       // console.log('selectedData :>> ', selectedData)
     // }
 
   }
 
-  // todo: сделать выбор даты через селекты
-  // + сделать рендер компонентов от состояния, object...map()..
-  // чтобы передать тип селекта для определения его в состоянии даты
-
   return (
     <div className='select'>
-      {endDate
-        ? <h3>select data and time: endDate</h3>
-        : <h3>select data and time</h3>
-      }
+      <h3>select data and time</h3>
 
-      {/* день/месяц/год */}
       <div className='select__wrapper'>
-
         {Object.keys(initialDate).map(key => (
-          // <p>{key}: {selectedData[key]}</p>
-          // todo - вывод переиспол. компонента селекта
-          // <DateSelect selectedData={selectedData}/>
+          <div key={key}>
+            <p>- {key} -</p>
 
-          <div>
-            <p>{key}</p>
-
-            <select onChange={(e) => toggleChange(e, key)} value={initialDate}>
+            <select onChange={(e) => toggleChange(e, key)} value={selectedData[key]}>
               {initialDate[key].options
                 ? initialDate[key].options.map(option => (
-                    <option value={option}>{option}</option>
+                    <option
+                      key={option}
+                      value={option}
+                      selected={selectedData[key] === option}
+                    >
+                      {option}
+                    </option>
                   ))
-                : <option value="">---</option>
+                : <option key={option} value="">---</option>
               }
-              
             </select>
           </div>
         ))}
-
       </div>
 
-      <button onClick={setDate}>select data</button>
+      <button onClick={setDate}>set end date</button>
     </div>
   ) 
 }
