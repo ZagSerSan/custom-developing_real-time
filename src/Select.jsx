@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import "./select.css"
 import dateStore from './dateStore'
-import { validator } from './utils/validator'
-import DateSelect from './DateSelect'
+// import { validator } from './utils/validator'
+// import DateSelect from './DateSelect'
+import { arrayFromNum } from './utils/arrayFromNum'
 
 const Select = () => {
   const { endDate, setEndDate } = dateStore()
@@ -11,8 +12,6 @@ const Select = () => {
   const currDate = new Date()
   const maxDaysCount = (new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0)).getDate()
 
-  //? созадть хелпер для генерации опционов
-
   const [initialDate, setInitialDate] = useState({
     year: {
       current: currDate.getFullYear(),
@@ -20,12 +19,14 @@ const Select = () => {
     },
     month: {
       current: currDate.getMonth() + 1,
-      // options: [currDate.getFullYear(), currDate.getFullYear() + 1]
-      max: 12
+      options: arrayFromNum(12)
     },
-    day: {current: currDate.getDate(), max: maxDaysCount},
-    hours: {current: currDate.getHours(), max: 23},
-    minutes: {current: currDate.getMinutes(), max: 59}
+    day: {
+      current: currDate.getDate(),
+      options: arrayFromNum(maxDaysCount)
+    },
+    hours: {current: currDate.getHours(), options: arrayFromNum(23)},
+    minutes: {current: currDate.getMinutes(), options: arrayFromNum(59)}
   })
   // todo - на этой сущности построить селект и её изменение и измен селекта
   // console.log('initialDate :>> ', initialDate)
@@ -33,9 +34,9 @@ const Select = () => {
   // состояние введённой даты
   const [selectedData, setSelectedData] = useState(
     {
-      day: 1,
-      month: 7,
-      year: 2024,
+      day: 0,
+      month: 0,
+      year: 0,
       hours: 0,
       minutes: 0
     }
@@ -47,15 +48,22 @@ const Select = () => {
 
   const toggleChange = (e, type) => {
     const value = e.target.value
-    console.log('type :>> ', type)
-    console.log('value :>> ', value)
+    // console.log('type :>> ', type)
+    // console.log('value :>> ', value)
+
+    
+    // setSelectedData(prev => ({
+      //   ...prev,
+      //   [type]: value
+      // }))
 
     // todo - переделать на выпадающие селекты + validate
     // if (validator(value, type, selectedData.year, selectedData.month)) {
-    //   setSelectedData(prev => ({
-    //     ...prev,
-    //     [type]: value
-    //   }))
+      // setSelectedData(prev => ({
+      //   ...prev,
+      //   [type]: value
+      // }))
+      // console.log('selectedData :>> ', selectedData)
     // }
 
   }
@@ -82,16 +90,12 @@ const Select = () => {
           <div>
             <p>{key}</p>
 
-            <select onChange={(e) => toggleChange(e, key)} value={initialDate.day}>
+            <select onChange={(e) => toggleChange(e, key)} value={initialDate}>
               {initialDate[key].options
                 ? initialDate[key].options.map(option => (
-                    <option value="">{option}</option>
+                    <option value={option}>{option}</option>
                   ))
-                : (
-                    <option value="">---</option>
-                    // <option value="oneOption">One option</option>
-                    // <option value="twoOption">Two option</option>
-                )
+                : <option value="">---</option>
               }
               
             </select>
