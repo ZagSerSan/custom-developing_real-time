@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./select.css"
 import dateStore from './dateStore'
 // import { validator } from './utils/validator'
@@ -7,39 +7,49 @@ import { arrayFromNum } from './utils/arrayFromNum'
 
 const Select = () => {
   const { endDate, setEndDate } = dateStore()
-
   // получение текущей даты и создание сущности исходной даты для селекта
   const currDate = new Date()
-  // todo - изменение макс кол-ва дней в зависимости от выбранного месяца
-  const maxDaysCount = (new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0)).getDate()
-
-  const [initialDate, setInitialDate] = useState({
-    year: {
-      current: currDate.getFullYear(),
-      options: [currDate.getFullYear(), currDate.getFullYear() + 1]
-    },
-    month: {
-      current: currDate.getMonth() + 1,
-      options: arrayFromNum(12)
-    },
-    day: {
-      current: currDate.getDate(),
-      options: arrayFromNum(maxDaysCount)
-    },
-    hours: {current: currDate.getHours(), options: arrayFromNum(23)},
-    minutes: {current: currDate.getMinutes(), options: arrayFromNum(59)}
-  })
-
+  // const maxDaysCount = (new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0)).getDate()
   // состояние введённой даты
   const [selectedData, setSelectedData] = useState(
     {
-      day: initialDate.day.current,
-      month: initialDate.month.current,
-      year: initialDate.year.current,
-      hours: initialDate.hours.current,
-      minutes: initialDate.minutes.current
+      day: currDate.getDate(),
+      month: currDate.getMonth() + 1,
+      year: currDate.getFullYear(),
+      hours: currDate.getHours(),
+      minutes: currDate.getMinutes()
     }
   )
+
+  // изменение макс кол-ва дней в зависимости от выбранного месяца
+  useEffect(() => {
+    setInitialDate(prev => ({
+      ...prev,
+      day: {options: arrayFromNum(
+        (new Date(selectedData.year, selectedData.month + 1, 0)).getDate()
+      )}
+    }))
+  }, [selectedData.month])
+
+  const [initialDate, setInitialDate] = useState({
+    year: {
+      options: [currDate.getFullYear(), currDate.getFullYear() + 1]
+    },
+    month: {
+      options: arrayFromNum(12)
+    },
+    day: {
+      options: arrayFromNum(
+        (new Date(selectedData.year, selectedData.month + 1, 0)).getDate()
+      )
+    },
+    hours: {
+      options: arrayFromNum(23)
+    },
+    minutes: {
+      options: arrayFromNum(59)
+    }
+  })
 
   const setDate = () => {
     // todo - финальная передача endDate в стор для таймера
@@ -76,7 +86,6 @@ const Select = () => {
                     <option
                       key={option}
                       value={option}
-                      selected={selectedData[key] === option}
                     >
                       {option}
                     </option>
