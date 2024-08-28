@@ -15,9 +15,9 @@ const Select = () => {
   // состояние введённой даты
   const [selectedData, setSelectedData] = useState(
     {
-      day: currDate.getDate(),
-      month: currDate.getMonth() + 1,
       year: currDate.getFullYear(),
+      month: currDate.getMonth() + 1,
+      day: currDate.getDate(),
       hours: currDate.getHours(),
       minutes: currDate.getMinutes()
     }
@@ -56,7 +56,28 @@ const Select = () => {
   const setDate = () => {
     // todo 1 - финальная передача endDate в стор для таймера
     // setEndDate(selectedData)
-    console.log('selectedData :>> ', selectedData)
+    //todo (idea) - преобразовать дату в правильный формат: "2024-07-24T19:00:00"
+    // для передачи сюда => const endDate = new Date("2024-07-24T19:00:00")
+    // console.log('selectedData :>> ', selectedData)
+
+    let formattedDate = ''
+
+    for (let i = 0; i < Object.values(selectedData).length; i++) {
+      let value = String(Object.values(selectedData)[i])
+      value = String(value).length < 2 ? "0" + value : value
+      if (i < 2) {
+        value += '-'
+      } else if (i === 2 ) {
+        value += 'T'
+      } else {
+        i === 4
+        ? value
+        : value += ':'
+      }
+      formattedDate += value
+    }
+
+    console.log('formattedDate :>> ', formattedDate)
   }
 
   const toggleChange = (e, type) => {
@@ -66,7 +87,7 @@ const Select = () => {
     // if (validator(value, type, selectedData.year, selectedData.month)) {
       setSelectedData(prev => ({
         ...prev,
-        [type]: value
+        [type]: Number(value)
       }))
       // console.log('selectedData :>> ', selectedData)
     // }
