@@ -4,6 +4,7 @@ import dateStore from './dateStore'
 // import { validator } from './utils/validator'
 // import DateSelect from './DateSelect'
 import { arrayFromNum } from './utils/arrayFromNum'
+import { formatDate } from './utils/formatDate'
 
 // todo 3 - ограничить выбор прошедшей даты
 
@@ -56,28 +57,9 @@ const Select = () => {
   const setDate = () => {
     // todo 1 - финальная передача endDate в стор для таймера
     // setEndDate(selectedData)
-    //todo (idea) - преобразовать дату в правильный формат: "2024-07-24T19:00:00"
-    // для передачи сюда => const endDate = new Date("2024-07-24T19:00:00")
-    // console.log('selectedData :>> ', selectedData)
 
-    let formattedDate = ''
-
-    for (let i = 0; i < Object.values(selectedData).length; i++) {
-      let value = String(Object.values(selectedData)[i])
-      value = String(value).length < 2 ? "0" + value : value
-      if (i < 2) {
-        value += '-'
-      } else if (i === 2 ) {
-        value += 'T'
-      } else {
-        i === 4
-        ? value
-        : value += ':'
-      }
-      formattedDate += value
-    }
-
-    console.log('formattedDate :>> ', formattedDate)
+    // эту форматированную дату передать в стор для таймера
+    console.log('formatDate :>> ', formatDate(selectedData))
   }
 
   const toggleChange = (e, type) => {
