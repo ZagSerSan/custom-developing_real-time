@@ -9,8 +9,9 @@ import { formatDate } from './utils/formatDate'
 // todo 3 - ограничить выбор прошедшей даты
 
 const Select = () => {
-  const { endDate, setEndDate } = dateStore()
+  const { setEndDate } = dateStore()
   // получение текущей даты и создание сущности исходной даты для селекта
+  
   const currDate = new Date()
   // const maxDaysCount = (new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0)).getDate()
   // состояние введённой даты
@@ -56,24 +57,19 @@ const Select = () => {
 
   const setDate = () => {
     // todo 1 - финальная передача endDate в стор для таймера
-    // setEndDate(selectedData)
+    setEndDate(formatDate(selectedData))
 
     // эту форматированную дату передать в стор для таймера
-    console.log('formatDate :>> ', formatDate(selectedData))
+    // console.log('formatDate :>> ', formatDate(selectedData))
   }
 
   const toggleChange = (e, type) => {
     const value = e.target.value
 
-    // todo 2 - validate
-    // if (validator(value, type, selectedData.year, selectedData.month)) {
-      setSelectedData(prev => ({
-        ...prev,
-        [type]: Number(value)
-      }))
-      // console.log('selectedData :>> ', selectedData)
-    // }
-
+    setSelectedData(prev => ({
+      ...prev,
+      [type]: Number(value)
+    }))
   }
 
   return (

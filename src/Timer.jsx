@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { formatTime } from './utils/formatTime'
+import dateStore from './dateStore'
 
 const Timer = () => {
-  const endDate = new Date("2024-07-24T19:00:00")
+  const { endDate } = dateStore()
+
+  // const endDate = new Date("2024-07-24T19:00:00")
+  // const endDate = 
+
   const nowDate = Date.now()
-  const duration = endDate.getTime() - nowDate
+  const duration = endDate - nowDate
 
   const [time, setTime] = useState(duration)
   // остановить выполнение кода если время = 0

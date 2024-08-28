@@ -3,12 +3,15 @@ import { create } from 'zustand'
 const dateStore = create((set) => ({
   endDate: '',
 
-  // setEndDate: (selectedDate) => set((state) => ({ endDate: selectedDate }))
+  setEndDate: (date) => set((state) => ({ endDate: Date.parse(date) }))
 
-  setEndDate: (selectedDate) => set((state) => {
-    console.log('selectedDate', selectedDate)
-    set((state) => ({ endDate: selectedDate }))
-  }),
+  // setEndDate: (date) => set((state) => {
+  //   console.log('date', date)
+  //   let parsedDate = 
+  //   console.log('parsedDate :>> ', parsedDate)
+
+  //   set((state) => ({ endDate: parsedDate }))
+  // }),
 }))
 
 export default dateStore
