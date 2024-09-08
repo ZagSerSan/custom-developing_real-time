@@ -24,5 +24,5 @@ export const formatDate = (dateObj) => {
     dateString += value
   }
 
-  return dateString
+  return Date.parse(dateString)
 }

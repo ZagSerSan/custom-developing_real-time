@@ -6,6 +6,6 @@ export const formatTime = (milisecundes) => {
 
   // if (milisecundes <= 0 ) return 'timer is over!'
   // return `${days} days | ${hours} hours | ${minutes} minutes | ${secundes} secundes`
-  if (milisecundes <= 0 ) return {}
+  if (milisecundes <= 0 ) return false
   return { days, hours, minutes, secundes }
 }

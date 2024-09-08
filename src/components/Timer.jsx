@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { formatTime } from './utils/formatTime'
-import dateStore from './dateStore'
+import { formatTime } from '../utils/formatTime'
+import dateStore from '../store/dateStore'
 let interval
 
 const Timer = () => {
-  const { endDate } = dateStore()
+  const { endDate, setEndDate } = dateStore()
   const [difference, setDifference] = useState(0)
   const updateInteraval = 1000
 
   useEffect(() => {
     if (!endDate) {
+      setDifference(0)
       clearInterval(interval)
       interval = null
-      setDifference(0)
       return
     }
 
@@ -22,19 +22,26 @@ const Timer = () => {
     }, updateInteraval)
   }, [endDate])
 
-  //todo вывести форматированную дату
+  useEffect(() => {
+    if (difference < 0) {
+      clearInterval(interval)
+      interval = null
+      setDifference(0)
+      // обнуление конечной даты (разблок кнопки таймера)
+      setEndDate(0)
+      return
+    }
+  }, [difference])
 
-  // console.log(formatTime(time))
-  // let timeObj = formatTime(time)
+  let timeObj = formatTime(difference)
 
   return (
     <div>
-      <p>{difference}</p>
-      {/* {timeObj && Object.keys(timeObj).map(key => (
+      {timeObj && Object.keys(timeObj).map(key => (
         <p key={key}>
           {`${key}: ${timeObj[key]}`}
         </p>
-      ))} */}
+      ))}
     </div>
   )
 }

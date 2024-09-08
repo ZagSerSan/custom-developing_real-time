@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
-import Timer from './Timer'
-import Select from './Select'
+import Timer from './components/Timer'
+import Select from './components/Select'
 
 function App() {
 

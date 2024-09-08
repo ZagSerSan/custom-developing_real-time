@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import "./select.css"
-import dateStore from './dateStore'
-// import { validator } from './utils/validator'
-// import DateSelect from './DateSelect'
-import { arrayFromNum } from './utils/arrayFromNum'
-import { formatDate } from './utils/formatDate'
+import dateStore from '../store/dateStore'
+import { arrayFromNum } from '../utils/arrayFromNum'
+import { formatDate } from '../utils/formatDate'
 
-// todo 3 - ограничить выбор прошедшей даты
+// todo 1 - ограничить выбор прошедшей даты
 
 const Select = () => {
-  const { setEndDate, resetEndDate } = dateStore()
+  const { endDate, setEndDate, resetEndDate } = dateStore()
   // получение текущей даты и создание сущности исходной даты для селекта
   
   const currDate = new Date()
@@ -56,11 +54,7 @@ const Select = () => {
   })
 
   const setDate = () => {
-    // todo 1 - финальная передача endDate в стор для таймера
     setEndDate(formatDate(selectedData))
-
-    // эту форматированную дату передать в стор для таймера
-    // console.log('formatDate :>> ', formatDate(selectedData))
   }
 
   const toggleChange = (e, type) => {
@@ -98,7 +92,7 @@ const Select = () => {
         ))}
       </div>
 
-      <button onClick={setDate}>set date</button>
+      <button onClick={setDate} disabled={endDate}>set date</button>
       <button onClick={resetEndDate}>reset date</button>
     </div>
   ) 

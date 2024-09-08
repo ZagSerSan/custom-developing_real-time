@@ -1,3 +1,4 @@
+/* 
 export const validator = (value, type, year, month) => {
   // количество дней в выбранном месяце
   const dayCount = (new Date(year, month, 0)).getDate()
@@ -33,3 +34,4 @@ export const validator = (value, type, year, month) => {
     return true
   }
 }
+*/
