@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 const dateStore = create((set) => ({
-  endDate: '',
+  endDate: 0,
 
   setEndDate: (date) => set((state) => ({ endDate: Date.parse(date) }))
 
