@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react'
 let interval
 
-const useNow = (updateInteraval, enabled, cb) => {
+const useNow = (updateInteraval, endDate, cb) => {
   // updateInteraval - частота обновления таймера
-  // enabled - выключить функцию если не нужна (при выкл таймере)
+  // enabled (endDate) - выключить функцию если не нужна (при выкл таймере)
     // засунул сюда конечное время
   // cb - callback выполняющийся каждый интервал updateInteraval
   // использовать например для отключения таймера в конце (прописать условия в функции)
 
-  const [now, setNow] = useState(0)
+  // const [now, setNow] = useState(0)
+  const [difference, setDifference] = useState(0)
 
   useEffect(() => {
-    if (!enabled) {
+    if (!endDate) {
       clearInterval(interval)
       interval = null
-      setNow(0)
+      setDifference(0)
       return
     }
 
     interval = setInterval(() => {
-      setNow(Date.now())
+      // устанавливать разницу даты
+      setDifference(endDate - Date.now())
     }, updateInteraval)
-  }, [enabled])
+  }, [endDate])
 
-  return now
+  return difference
 }
 
 export default useNow

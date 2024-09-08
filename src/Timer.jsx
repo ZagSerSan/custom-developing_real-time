@@ -10,12 +10,12 @@ const Timer = () => {
   // console.log('time :>> ', time)
 
   // todo - получать текущ дату кажд секунду
-  const nowDate = useNow(1000, endDate)
+  const difference = useNow(1000, endDate)
 
-  let duration = endDate
-    ? endDate - nowDate
-    : 0
-  console.log('duration :>> ', duration)
+  // let difference = endDate
+  //   ? endDate - nowDate
+  //   : 0
+  console.log('difference :>> ', difference)
 
   // useEffect(() => {
   //   if (endDate) {
@@ -44,7 +44,7 @@ const Timer = () => {
 
   return (
     <div>
-      <p>{duration}</p>
+      <p>{difference}</p>
       {/* {timeObj && Object.keys(timeObj).map(key => (
         <p key={key}>
           {`${key}: ${timeObj[key]}`}
