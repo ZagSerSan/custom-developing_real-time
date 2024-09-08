@@ -78,12 +78,14 @@ const Select = () => {
             <select onChange={(e) => toggleChange(e, key)} value={selectedData[key]}>
               {initialDate[key].options
                 ? initialDate[key].options.map(option => (
-                    <option
-                      key={option}
-                      value={option}
-                    >
-                      {option}
-                    </option>
+                  selectedData[key] <= option
+                    ? <option
+                        key={option}
+                        value={option}
+                      >
+                        {option}
+                      </option>
+                    : null
                   ))
                 : <option key={option} value="">---</option>
               }
