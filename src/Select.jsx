@@ -9,7 +9,7 @@ import { formatDate } from './utils/formatDate'
 // todo 3 - ограничить выбор прошедшей даты
 
 const Select = () => {
-  const { setEndDate } = dateStore()
+  const { setEndDate, resetEndDate } = dateStore()
   // получение текущей даты и создание сущности исходной даты для селекта
   
   const currDate = new Date()
@@ -98,7 +98,8 @@ const Select = () => {
         ))}
       </div>
 
-      <button onClick={setDate}>set end date</button>
+      <button onClick={setDate}>set date</button>
+      <button onClick={resetEndDate}>reset date</button>
     </div>
   ) 
 }

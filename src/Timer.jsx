@@ -1,34 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import { formatTime } from './utils/formatTime'
 import dateStore from './dateStore'
+import useNow from './useNow'
 
 const Timer = () => {
   const { endDate } = dateStore()
-  console.log('endDate :>> ', endDate)
-
-
-  // const endDate = new Date("2024-07-24T19:00:00")
-  // const endDate = 
-
   // const nowDate = Date.now()
-  // const duration = endDate - nowDate
+  // let [time, setTime] = useState(0)
+  // console.log('time :>> ', time)
 
-  // const [time, setTime] = useState(duration)
+  // todo - получать текущ дату кажд секунду
+  const nowDate = useNow(1000, endDate)
+
+  let duration = endDate
+    ? endDate - nowDate
+    : 0
+  console.log('duration :>> ', duration)
+
+  // useEffect(() => {
+  //   if (endDate) {
+  //     const duration = endDate - nowDate
+  //     setTime(duration)
+  //   } else {
+  //     setTime(0)
+  //   }
+  // }, [endDate])
+
   // остановить выполнение кода если время = 0
-  // if (duration <= 0) return console.log('timer is over')
+  // if (time <= 0) return console.log('timer is over')
 
-  // продолжить если больше нуля
+  //todo продолжить если больше нуля
+
+  // const now = useNow(1000, endDate)
+
   // useEffect(() => {
   //   setTimeout(() => {
   //     setTime(duration - 1000)
   //   }, 1000)
   // }, [time])
-  
+
   // console.log(formatTime(time))
   // let timeObj = formatTime(time)
 
   return (
     <div>
+      <p>{duration}</p>
       {/* {timeObj && Object.keys(timeObj).map(key => (
         <p key={key}>
           {`${key}: ${timeObj[key]}`}
