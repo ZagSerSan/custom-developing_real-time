@@ -1,43 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { formatTime } from './utils/formatTime'
 import dateStore from './dateStore'
-import useNow from './useNow'
+let interval
 
 const Timer = () => {
   const { endDate } = dateStore()
-  // const nowDate = Date.now()
-  // let [time, setTime] = useState(0)
-  // console.log('time :>> ', time)
+  const [difference, setDifference] = useState(0)
+  const updateInteraval = 1000
 
-  // todo - получать текущ дату кажд секунду
-  const difference = useNow(1000, endDate)
+  useEffect(() => {
+    if (!endDate) {
+      clearInterval(interval)
+      interval = null
+      setDifference(0)
+      return
+    }
 
-  // let difference = endDate
-  //   ? endDate - nowDate
-  //   : 0
-  console.log('difference :>> ', difference)
+    interval = setInterval(() => {
+      // устанавливать разницу даты
+      setDifference(endDate - Date.now())
+    }, updateInteraval)
+  }, [endDate])
 
-  // useEffect(() => {
-  //   if (endDate) {
-  //     const duration = endDate - nowDate
-  //     setTime(duration)
-  //   } else {
-  //     setTime(0)
-  //   }
-  // }, [endDate])
-
-  // остановить выполнение кода если время = 0
-  // if (time <= 0) return console.log('timer is over')
-
-  //todo продолжить если больше нуля
-
-  // const now = useNow(1000, endDate)
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setTime(duration - 1000)
-  //   }, 1000)
-  // }, [time])
+  //todo вывести форматированную дату
 
   // console.log(formatTime(time))
   // let timeObj = formatTime(time)
