@@ -6,6 +6,7 @@ import { formatDate } from '../utils/formatDate'
 import { getCurrDate } from '../utils/getCurrDate'
 
 // todo 1 - ограничить выбор прошедшей даты
+// todo 2 изменение макс кол-ва месяцев в зависимости от выбранного года
 
 const Select = () => {
   const { endDate, setEndDate, resetEndDate } = dateStore()
