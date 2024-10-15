@@ -28,7 +28,8 @@ const Select = () => {
     setInitialDate(prev => ({
       ...prev,
       day: {options: arrayFromNum(
-        (new Date(selectedData.year, selectedData.month + 1, 0)).getDate()
+        (new Date(selectedData.year, selectedData.month + 1, 0)).getDate(),
+        selectedData.day
       )}
     }))
   }, [selectedData.month])
@@ -38,18 +39,19 @@ const Select = () => {
       options: [currDate.getFullYear(), currDate.getFullYear() + 1]
     },
     month: {
-      options: arrayFromNum(12)
+      options: arrayFromNum(12, selectedData.month)
     },
     day: {
       options: arrayFromNum(
-        (new Date(selectedData.year, selectedData.month + 1, 0)).getDate()
+        (new Date(selectedData.year, selectedData.month + 1, 0)).getDate(),
+        selectedData.day
       )
     },
     hours: {
-      options: arrayFromNum(23)
+      options: arrayFromNum(23, selectedData.hours)
     },
     minutes: {
-      options: arrayFromNum(59)
+      options: arrayFromNum(59, selectedData.minutes)
     }
   })
 
@@ -78,14 +80,16 @@ const Select = () => {
             <select onChange={(e) => toggleChange(e, key)} value={selectedData[key]}>
               {initialDate[key].options
                 ? initialDate[key].options.map(option => (
-                  selectedData[key] <= option
-                    ? <option
+                  // selectedData[key]
+                  // selectedData[key] <= option
+                    // ? <option
+                    <option
                         key={option}
                         value={option}
                       >
                         {option}
                       </option>
-                    : null
+                    // : null
                   ))
                 : <option key={option} value="">---</option>
               }
