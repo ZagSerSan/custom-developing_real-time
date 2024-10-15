@@ -3,6 +3,7 @@ import "./select.css"
 import dateStore from '../store/dateStore'
 import { arrayFromNum } from '../utils/arrayFromNum'
 import { formatDate } from '../utils/formatDate'
+import { getCurrDate } from '../utils/getCurrDate'
 
 // todo 1 - ограничить выбор прошедшей даты
 
@@ -10,48 +11,52 @@ const Select = () => {
   const { endDate, setEndDate, resetEndDate } = dateStore()
   // получение текущей даты и создание сущности исходной даты для селекта
   
-  const currDate = new Date()
-  // const maxDaysCount = (new Date(currDate.getFullYear(), currDate.getMonth() + 1, 0)).getDate()
-  // состояние введённой даты
-  const [selectedData, setSelectedData] = useState(
-    {
-      year: currDate.getFullYear(),
-      month: currDate.getMonth() + 1,
-      day: currDate.getDate(),
-      hours: currDate.getHours(),
-      minutes: currDate.getMinutes()
-    }
-  )
+  const [selectedData, setSelectedData] = useState(getCurrDate())
 
   // изменение макс кол-ва дней в зависимости от выбранного месяца
   useEffect(() => {
-    setInitialDate(prev => ({
-      ...prev,
-      day: {options: arrayFromNum(
-        (new Date(selectedData.year, selectedData.month + 1, 0)).getDate(),
-        selectedData.day
-      )}
-    }))
+    // переменная откуда начинать отсчёт дней месяца
+    // если месяц не текущий, то начинать от 1 дня, а не от текущего как в текущем месяце
+    let startPointDay = 1
+    // если выбраный месяц = текущему, то считать то текущего дня
+    if (selectedData.month === getCurrDate('month')) {
+      setInitialDate(prev => ({
+        ...prev,
+        day: {options: arrayFromNum(
+          (new Date(getCurrDate('year'), getCurrDate('month') + 1, 0)).getDate(),
+          getCurrDate('day')
+        )}
+      }))
+    } else {
+      // если выбраный месяц != текущему, то считать от 1 дня месяца
+      setInitialDate(prev => ({
+        ...prev,
+        day: {options: arrayFromNum(
+          (new Date(getCurrDate('year'), getCurrDate('month') + 1, 0)).getDate(),
+          1
+        )}
+      }))
+    }
   }, [selectedData.month])
 
   const [initialDate, setInitialDate] = useState({
     year: {
-      options: [currDate.getFullYear(), currDate.getFullYear() + 1]
+      options: [getCurrDate('year'), getCurrDate('year') + 1]
     },
     month: {
-      options: arrayFromNum(12, selectedData.month)
+      options: arrayFromNum(12, getCurrDate('month'))
     },
     day: {
       options: arrayFromNum(
-        (new Date(selectedData.year, selectedData.month + 1, 0)).getDate(),
-        selectedData.day
+        (new Date(getCurrDate('year'), getCurrDate('month') + 1, 0)).getDate(),
+        getCurrDate('day')
       )
     },
     hours: {
-      options: arrayFromNum(23, selectedData.hours)
+      options: arrayFromNum(23, getCurrDate('hours'))
     },
     minutes: {
-      options: arrayFromNum(59, selectedData.minutes)
+      options: arrayFromNum(59, getCurrDate('minutes'))
     }
   })
 
@@ -80,16 +85,12 @@ const Select = () => {
             <select onChange={(e) => toggleChange(e, key)} value={selectedData[key]}>
               {initialDate[key].options
                 ? initialDate[key].options.map(option => (
-                  // selectedData[key]
-                  // selectedData[key] <= option
-                    // ? <option
-                    <option
-                        key={option}
-                        value={option}
-                      >
-                        {option}
-                      </option>
-                    // : null
+                  <option
+                      key={option}
+                      value={option}
+                    >
+                      {option}
+                    </option>
                   ))
                 : <option key={option} value="">---</option>
               }

@@ -8,6 +8,7 @@ export const arrayFromNum = (num, nowDateValue) => {
   // }
 
   // i = значение текущей даты, от которого начинается отсчёт
+  
   for (let i = nowDateValue; i < num + 1; i++) {
     array.push(String(i))
   }
