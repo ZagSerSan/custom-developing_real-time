@@ -5,13 +5,57 @@ import { arrayFromNum } from '../utils/arrayFromNum'
 import { formatDate } from '../utils/formatDate'
 import { getCurrDate } from '../utils/getCurrDate'
 
-// todo 1 убрать секунды (выбирать дату минимум до следующего часа в будущем)
+// todo 1 - проверка и реал новых идей
 
 const Select = () => {
   const { endDate, setEndDate, resetEndDate } = dateStore()
   
   // получение текущей даты
   const [selectedData, setSelectedData] = useState(getCurrDate())
+
+  // изменение макс кол-ва минут в зависимости от выбранного часа
+  useEffect(() => {
+    // если выбраный час = текущему => обновить минимальную опцию на +1 мин
+    if (selectedData.hours === getCurrDate('hours')) {
+      setInitialDate(prev => ({
+        ...prev,
+        minutes: {options: arrayFromNum(59, getCurrDate('minutes') + 1)}
+      }))
+      // перезаписать состояние выбаной минуты на +1 вперёд
+      setSelectedData(prev => ({
+        ...prev,
+        minutes: getCurrDate('minutes') + 1
+      }))
+    } else {
+      // если выбраный час != текущему => вывесил полный список минут начиная с 1
+      setInitialDate(prev => ({
+        ...prev,
+        minutes: {options: arrayFromNum(59, 1)}
+      }))
+    }
+  }, [selectedData.hours])
+
+  // изменение макс кол-ва минут в зависимости от выбранного часа
+  useEffect(() => {
+    // если выбраный день = текущему => ограничить мин опцию часа от текущего
+    if (selectedData.day === getCurrDate('day')) {
+      setInitialDate(prev => ({
+        ...prev,
+        hours: {options: arrayFromNum(23, getCurrDate('hours'))}
+      }))
+      // перезаписать состояние выбаного часа на минимальное допустимое
+      setSelectedData(prev => ({
+        ...prev,
+        hours: getCurrDate('hours')
+      }))
+    } else {
+      // если выбраный час != текущему => вывесил полный список минут начиная с 1
+      setInitialDate(prev => ({
+        ...prev,
+        hours: {options: arrayFromNum(23, 0)}
+      }))
+    }
+  }, [selectedData.day])
 
   // изменение макс кол-ва дней в зависимости от выбранного месяца
   useEffect(() => {
@@ -26,6 +70,11 @@ const Select = () => {
           (new Date(getCurrDate('year'), getCurrDate('month'), 0)).getDate(),
           getCurrDate('day')
         )}
+      }))
+      // перезаписать состояние выбаного дня на минимальное допустимое
+      setSelectedData(prev => ({
+        ...prev,
+        day: getCurrDate('day')
       }))
     } else {
       // если выбраный месяц != текущему, то считать от 1 дня месяца
@@ -125,6 +174,7 @@ const Select = () => {
                 : <option key={option} value="">---</option>
               }
             </select>
+
           </div>
         ))}
       </div>
