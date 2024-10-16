@@ -5,7 +5,8 @@ import { arrayFromNum } from '../utils/arrayFromNum'
 import { formatDate } from '../utils/formatDate'
 import { getCurrDate } from '../utils/getCurrDate'
 
-// todo 1 - проверка и реал новых идей
+// todo idea - проверка и реал новых идей
+  //? откл/вкл выбора минут или установить стандартное фикс знач, наприм 00 или 59 мин
 
 const Select = () => {
   const { endDate, setEndDate, resetEndDate } = dateStore()
