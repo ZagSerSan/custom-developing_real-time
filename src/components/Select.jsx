@@ -5,41 +5,69 @@ import { arrayFromNum } from '../utils/arrayFromNum'
 import { formatDate } from '../utils/formatDate'
 import { getCurrDate } from '../utils/getCurrDate'
 
-// todo 1 - ограничить выбор прошедшей даты
-// todo 2 изменение макс кол-ва месяцев в зависимости от выбранного года
+// todo 1 убрать секунды (выбирать дату минимум до следующего часа в будущем)
 
 const Select = () => {
   const { endDate, setEndDate, resetEndDate } = dateStore()
-  // получение текущей даты и создание сущности исходной даты для селекта
   
+  // получение текущей даты
   const [selectedData, setSelectedData] = useState(getCurrDate())
 
   // изменение макс кол-ва дней в зависимости от выбранного месяца
   useEffect(() => {
     // переменная откуда начинать отсчёт дней месяца
     // если месяц не текущий, то начинать от 1 дня, а не от текущего как в текущем месяце
-    let startPointDay = 1
+
     // если выбраный месяц = текущему, то считать то текущего дня
     if (selectedData.month === getCurrDate('month')) {
       setInitialDate(prev => ({
         ...prev,
         day: {options: arrayFromNum(
-          (new Date(getCurrDate('year'), getCurrDate('month') + 1, 0)).getDate(),
+          (new Date(getCurrDate('year'), getCurrDate('month'), 0)).getDate(),
           getCurrDate('day')
         )}
       }))
     } else {
       // если выбраный месяц != текущему, то считать от 1 дня месяца
+      // передаёт нетекущий месяц, а выбраный: selectedData.month
       setInitialDate(prev => ({
         ...prev,
         day: {options: arrayFromNum(
-          (new Date(getCurrDate('year'), getCurrDate('month') + 1, 0)).getDate(),
+          (new Date(getCurrDate('year'), selectedData.month, 0)).getDate(),
           1
         )}
       }))
     }
   }, [selectedData.month])
 
+  // изменение макс кол-ва месяцев в зависимости от выбранного года
+  useEffect(() => {
+    // если выбран текущий год => в селект генер месяцы от текущего
+    if (selectedData.year === getCurrDate('year')) {
+      setInitialDate(prev => ({
+        ...prev,
+        month: {options: arrayFromNum(12, getCurrDate('month'))}
+      }))
+      // и меняем выбраный месяц на текущий (для перехода из опции след года)
+      setSelectedData(prev => ({
+        ...prev,
+        month: getCurrDate('month')
+      }))
+    } else {
+      // если выбран не текущий год => в селект генер месяцы от 1
+      setInitialDate(prev => ({
+        ...prev,
+        month: {options: arrayFromNum(12, 1)}
+      }))
+      // и меняем выбраный месяц на 1 (просто для сброса)
+      setSelectedData(prev => ({
+        ...prev,
+        month: 1
+      }))
+    }
+  }, [selectedData.year])
+
+  // исходное состояние оцпий селекта 
   const [initialDate, setInitialDate] = useState({
     year: {
       options: [getCurrDate('year'), getCurrDate('year') + 1]
@@ -61,17 +89,18 @@ const Select = () => {
     }
   })
 
-  const setDate = () => {
-    setEndDate(formatDate(selectedData))
-  }
-
+  // перезапись состояния выбраной даты при изменении значений селекта на сайте
   const toggleChange = (e, type) => {
     const value = e.target.value
-
     setSelectedData(prev => ({
       ...prev,
       [type]: Number(value)
     }))
+  }
+
+  // отправка даты из селекта в стор (конечный пункт компонента)
+  const setDate = () => {
+    setEndDate(formatDate(selectedData))
   }
 
   return (
