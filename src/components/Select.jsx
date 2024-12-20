@@ -7,6 +7,7 @@ import { getCurrDate } from '../utils/getCurrDate'
 
 // todo idea - проверка и реал новых идей
   //? откл/вкл выбора минут или установить стандартное фикс знач, наприм 00 или 59 мин
+  //* переключения способа выбора даты: селекты или строка
 
 const Select = () => {
   const { endDate, setEndDate, resetEndDate } = dateStore()
@@ -155,7 +156,12 @@ const Select = () => {
 
   return (
     <div className='select'>
-      <h3>select data and time</h3>
+      <h3>select data and time with:</h3>
+
+      <div>
+        <button>select</button>
+        <button>string</button>
+      </div>
 
       <div className='select__wrapper'>
         {Object.keys(initialDate).map(key => (
