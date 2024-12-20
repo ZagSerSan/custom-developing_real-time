@@ -216,51 +216,78 @@ const Select = () => {
               </div>
             ))}
           </div>
-        : <div>
-            <p>
-              use this date format:
-              <span style={{fontStyle: 'italic'}}> yyyy.mm.dd hh.mm</span>
-            </p>
+        // : <div>
+        //     <p>
+        //       use this date format:
+        //       <span style={{fontStyle: 'italic'}}> yyyy.mm.dd hh.mm</span>
+        //     </p>
+        //     <input
+        //       style={{width: '40px'}}
+        //       placeholder='year'
+        //       type='text'
+        //       value={selectedData['year']}
+        //       onChange={(e) => toggleChange(e, 'year')}
+        //     />
+        //     {' / '}
+        //     <input
+        //       style={{width: '25px'}}
+        //       placeholder='mm'
+        //       type='text'
+        //       value={selectedData['month']}
+        //       onChange={(e) => toggleChange(e, 'month')}
+        //     />
+        //     {' / '}
+        //     <input
+        //       style={{width: '25px'}}
+        //       placeholder='day'
+        //       type='text'
+        //       value={selectedData['day']}
+        //       onChange={(e) => toggleChange(e, 'day')}
+        //     />
+        //     {' --- '}
+        //     <input
+        //       style={{width: '25px'}}
+        //       placeholder='hh'
+        //       type='text'
+        //       value={selectedData['hours']}
+        //       onChange={(e) => toggleChange(e, 'hours')}
+        //     />
+        //     {' : '}
+        //     <input
+        //       style={{width: '25px'}}
+        //       placeholder='mm'
+        //       type='text'
+        //       value={selectedData['minutes']}
+        //       onChange={(e) => toggleChange(e, 'minutes')}
+        //     />
+        //   </div>
+        : <div className='select__wrapper'>
+        {Object.keys(initialDate).map(key => (
+          <div key={key}>
+            <p>- {key} -</p>
+
             <input
-              style={{width: '40px'}}
-              placeholder='year'
+              style={key === 'year'
+                ? {width: '40px'}
+                : {width: '20px'}
+              }
+              placeholder=''
               type='text'
-              value={selectedData['year']}
-              onChange={(e) => toggleChange(e, 'year')}
-            />
-            {' / '}
-            <input
-              style={{width: '25px'}}
-              placeholder='mm'
-              type='text'
-              value={selectedData['month']}
-              onChange={(e) => toggleChange(e, 'month')}
-            />
-            {' / '}
-            <input
-              style={{width: '25px'}}
-              placeholder='day'
-              type='text'
-              value={selectedData['day']}
-              onChange={(e) => toggleChange(e, 'day')}
-            />
-            {' --- '}
-            <input
-              style={{width: '25px'}}
-              placeholder='hh'
-              type='text'
-              value={selectedData['hours']}
-              onChange={(e) => toggleChange(e, 'hours')}
-            />
-            {' : '}
-            <input
-              style={{width: '25px'}}
-              placeholder='mm'
-              type='text'
-              value={selectedData['minutes']}
-              onChange={(e) => toggleChange(e, 'minutes')}
-            />
+              value={selectedData[key]}
+              onChange={(e) => toggleChange(e, key)}
+             />
+             {key === 'year' || key === 'month'
+                ? ' /'
+                : key === 'day'
+                ? ' ---'
+                : key === 'hours'
+                ? ' :'
+                : ''
+              }
+
           </div>
+        ))}
+      </div>
       }
 
       <button onClick={setDate} disabled={endDate}>set date</button>
