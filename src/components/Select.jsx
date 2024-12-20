@@ -217,7 +217,10 @@ const Select = () => {
             ))}
           </div>
         : <div>
-            <p>use this date format: yyyy.mm.dd hh.mm</p>
+            <p>
+              use this date format:
+              <span style={{fontStyle: 'italic'}}> yyyy.mm.dd hh.mm</span>
+            </p>
             <input
               style={{width: '40px'}}
               placeholder='year'
