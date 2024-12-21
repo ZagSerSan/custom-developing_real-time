@@ -8,12 +8,8 @@ import { getCurrDate } from '../utils/getCurrDate'
 // todo idea - проверка и реал новых идей
   //? откл/вкл выбора минут или установить стандартное фикс знач, наприм 00 или 59 мин
 
-  //! идея string select method была заморожена, так как не имеет необходимости
-
 const Select = () => {
   const { endDate, setEndDate, resetEndDate } = dateStore()
-  //? состояние переключатеся способа выбора даты: select / string
-  //? const [selectionMethod, setSelectionMethod] = useState('select')
   
   // получение текущей даты
   const [selectedData, setSelectedData] = useState(getCurrDate())
@@ -162,23 +158,10 @@ const Select = () => {
     <div className='select'>
       <h3>select data and time:</h3>
 
-      {/* <div>
-        <button
-          className={selectionMethod === 'select' ? 'active' : ''}
-          onClick={() => setSelectionMethod('select')}
-            >select
-        </button>
-        <button
-          className={selectionMethod === 'string' ? 'active' : ''}
-          onClick={() => setSelectionMethod('string')}
-            >string
-        </button>
-      </div> */}
-
       <div className='select__wrapper'>
         {Object.keys(initialDate).map(key => (
           <div key={key}>
-            <p>- {key} -</p>
+            <p>{key}:</p>
 
             <select onChange={(e) => toggleChange(e, key)} value={selectedData[key]}>
               {initialDate[key].options
@@ -197,25 +180,6 @@ const Select = () => {
           </div>
         ))}
       </div>
-
-      {/* код для переключения методов выбора даты */}
-      {/* {selectionMethod === 'select'
-        ? 'select method with "selects"'
-        : <div className='select__wrapper'>
-        {Object.keys(initialDate).map(key => (
-          <div key={key}>
-            <p>- {key} -</p>
-
-            <input
-              placeholder={key}
-              type='text'
-              value={selectedData[key]}
-              onChange={(e) => toggleChange(e, key)}
-             />
-          </div>
-        ))}
-      </div>
-      } */}
 
       <button onClick={setDate} disabled={endDate}>set date</button>
       <button onClick={resetEndDate}>reset date</button>
