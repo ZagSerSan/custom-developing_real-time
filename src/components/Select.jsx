@@ -7,14 +7,13 @@ import { getCurrDate } from '../utils/getCurrDate'
 
 // todo idea - проверка и реал новых идей
   //? откл/вкл выбора минут или установить стандартное фикс знач, наприм 00 или 59 мин
-  //* переключения способа выбора даты: селекты или строка (+ udgrade this)
+
+  //! идея string select method была заморожена, так как не имеет необходимости
 
 const Select = () => {
   const { endDate, setEndDate, resetEndDate } = dateStore()
-  // состояние переключатеся способа выбора даты: select / string
-  const [selectionMethod, setSelectionMethod] = useState('select')
-  // состояние даты-строки
-  const [selectedDataString, setSelectedDataString] = useState('')
+  //? состояние переключатеся способа выбора даты: select / string
+  //? const [selectionMethod, setSelectionMethod] = useState('select')
   
   // получение текущей даты
   const [selectedData, setSelectedData] = useState(getCurrDate())
@@ -148,17 +147,6 @@ const Select = () => {
   const toggleChange = (e, type) => {
     const value = e.target.value
 
-    //? можно сразу в оригинальный обект засунуть
-    // if (selectionMethod === 'string') {
-    //   // console.log('selectedData :>> ', selectedData)
-    //   setSelectedDataString(value)
-    // } else {
-    //   setSelectedData(prev => ({
-    //     ...prev,
-    //     [type]: Number(value)
-    //   }))
-    // } 
-
     setSelectedData(prev => ({
       ...prev,
       [type]: Number(value)
@@ -167,20 +155,14 @@ const Select = () => {
 
   // отправка даты из селекта в стор (конечный пункт компонента)
   const setDate = () => {
-    //? можно по-старинке отправить
-
-    // selectionMethod === 'select'
-    //   ? setEndDate(formatDate(selectedData))
-    //   : console.log('selectedDataString', selectedDataString)
-
     setEndDate(formatDate(selectedData))
   }
 
   return (
     <div className='select'>
-      <h3>select data and time with:</h3>
+      <h3>select data and time:</h3>
 
-      <div>
+      {/* <div>
         <button
           className={selectionMethod === 'select' ? 'active' : ''}
           onClick={() => setSelectionMethod('select')}
@@ -191,104 +173,49 @@ const Select = () => {
           onClick={() => setSelectionMethod('string')}
             >string
         </button>
+      </div> */}
+
+      <div className='select__wrapper'>
+        {Object.keys(initialDate).map(key => (
+          <div key={key}>
+            <p>- {key} -</p>
+
+            <select onChange={(e) => toggleChange(e, key)} value={selectedData[key]}>
+              {initialDate[key].options
+                ? initialDate[key].options.map(option => (
+                  <option
+                      key={option}
+                      value={option}
+                    >
+                      {option}
+                    </option>
+                  ))
+                : <option key={option} value="">---</option>
+              }
+            </select>
+
+          </div>
+        ))}
       </div>
 
-      {selectionMethod === 'select'
-        ? <div className='select__wrapper'>
-            {Object.keys(initialDate).map(key => (
-              <div key={key}>
-                <p>- {key} -</p>
-
-                <select onChange={(e) => toggleChange(e, key)} value={selectedData[key]}>
-                  {initialDate[key].options
-                    ? initialDate[key].options.map(option => (
-                      <option
-                          key={option}
-                          value={option}
-                        >
-                          {option}
-                        </option>
-                      ))
-                    : <option key={option} value="">---</option>
-                  }
-                </select>
-
-              </div>
-            ))}
-          </div>
-        // : <div>
-        //     <p>
-        //       use this date format:
-        //       <span style={{fontStyle: 'italic'}}> yyyy.mm.dd hh.mm</span>
-        //     </p>
-        //     <input
-        //       style={{width: '40px'}}
-        //       placeholder='year'
-        //       type='text'
-        //       value={selectedData['year']}
-        //       onChange={(e) => toggleChange(e, 'year')}
-        //     />
-        //     {' / '}
-        //     <input
-        //       style={{width: '25px'}}
-        //       placeholder='mm'
-        //       type='text'
-        //       value={selectedData['month']}
-        //       onChange={(e) => toggleChange(e, 'month')}
-        //     />
-        //     {' / '}
-        //     <input
-        //       style={{width: '25px'}}
-        //       placeholder='day'
-        //       type='text'
-        //       value={selectedData['day']}
-        //       onChange={(e) => toggleChange(e, 'day')}
-        //     />
-        //     {' --- '}
-        //     <input
-        //       style={{width: '25px'}}
-        //       placeholder='hh'
-        //       type='text'
-        //       value={selectedData['hours']}
-        //       onChange={(e) => toggleChange(e, 'hours')}
-        //     />
-        //     {' : '}
-        //     <input
-        //       style={{width: '25px'}}
-        //       placeholder='mm'
-        //       type='text'
-        //       value={selectedData['minutes']}
-        //       onChange={(e) => toggleChange(e, 'minutes')}
-        //     />
-        //   </div>
+      {/* код для переключения методов выбора даты */}
+      {/* {selectionMethod === 'select'
+        ? 'select method with "selects"'
         : <div className='select__wrapper'>
         {Object.keys(initialDate).map(key => (
           <div key={key}>
             <p>- {key} -</p>
 
             <input
-              style={key === 'year'
-                ? {width: '40px'}
-                : {width: '20px'}
-              }
-              placeholder=''
+              placeholder={key}
               type='text'
               value={selectedData[key]}
               onChange={(e) => toggleChange(e, key)}
              />
-             {key === 'year' || key === 'month'
-                ? ' /'
-                : key === 'day'
-                ? ' ---'
-                : key === 'hours'
-                ? ' :'
-                : ''
-              }
-
           </div>
         ))}
       </div>
-      }
+      } */}
 
       <button onClick={setDate} disabled={endDate}>set date</button>
       <button onClick={resetEndDate}>reset date</button>
