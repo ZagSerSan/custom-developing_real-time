@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./select.css"
 import dateStore from '../store/dateStore'
 import { arrayFromNum } from '../utils/arrayFromNum'
-import { formatDate } from '../utils/formatDate'
+import { formatSelectedDate } from '../utils/formatSelectedDate'
 import { getCurrDate } from '../utils/getCurrDate'
 
 // todo idea - проверка и реал новых идей
@@ -151,7 +151,7 @@ const Select = () => {
 
   // отправка даты из селекта в стор (конечный пункт компонента)
   const setDate = () => {
-    setEndDate(formatDate(selectedData))
+    setEndDate(formatSelectedDate(selectedData))
   }
 
   return (

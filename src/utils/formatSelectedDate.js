@@ -1,4 +1,4 @@
-export const formatDate = (dateObj) => {
+export const formatSelectedDate = (dateObj) => {
   // разделители
   const dateSeparator = '-'
   const timeSeparator = ':'
