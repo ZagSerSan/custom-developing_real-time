@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios"
+const API_KEY = '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'
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([]) // Список сообщений
@@ -15,15 +16,37 @@ const ChatBot = () => {
 
     try {
       // Отправляем запрос к API
+      // const response = await axios.post(
+      //   "https://henryz-streaming-chat-with-gpt-3-5-turbo-using-l-df92eb4.hf.space/run/predict", // URL модели
+      //   { inputs: input },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${API_KEY}`, // Укажи свой API-ключ
+      //     },
+      //   }
+      // )
+
+      // console.log('response.data[0] :>> ', response.data[0])
+
+      //*** */
       const response = await axios.post(
-        "https://api-inference.huggingface.co/models/gpt2", // URL модели
-        { inputs: input },
+        "https://henryz-streaming-chat-with-gpt-3-5-turbo-using-l-df92eb4.hf.space/run/predict",
+        {
+          data: [
+            "Hello, how are you?",  // Твой запрос
+            null,  // Здесь может быть контекст, если это требуется
+          ]
+        },
         {
           headers: {
-            Authorization: `Bearer YOUR_API_KEY`, // Укажи свой API-ключ
+            "Content-Type": "application/json",
           },
         }
-      )
+      );
+      
+      // Получение данных из ответа
+      console.log("Ответ:", response.data);
+      //*** */
 
       // Ответ от бота
       const botMessage = {
@@ -52,7 +75,7 @@ const ChatBot = () => {
             style={{
               ...styles.message,
               alignSelf: msg.sender === "user" ? "flex-end" : "flex-start",
-              backgroundColor: msg.sender === "user" ? "#DCF8C6" : "#FFFFFF",
+              backgroundColor: msg.sender === "user" ? "#c9d9ff" : "#FFFFFF",
             }}
           >
             {msg.text}
@@ -72,6 +95,8 @@ const ChatBot = () => {
           Отправить
         </button>
       </div>
+      <p>How are you?</p>
+      <p>What year is it now?</p>
     </div>
   )
 }
@@ -80,7 +105,7 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    height: "100vh",
+    height: "80vh",
     maxWidth: "600px",
     margin: "0 auto",
     border: "1px solid #ccc",
@@ -94,7 +119,7 @@ const styles = {
     flexDirection: "column",
     gap: "10px",
     overflowY: "auto",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#6b6b6b",
   },
   message: {
     maxWidth: "70%",
