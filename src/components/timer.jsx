@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react"
 
-function Timer({ durationInSeconds, onComplete }) {
+const onComplete = () => {
+  console.log("Timer completed")
+}
+
+function Timer({ durationInSeconds = 3600 }) {
   const [remainingTime, setRemainingTime] = useState(durationInSeconds)
 
   useEffect(() => {
