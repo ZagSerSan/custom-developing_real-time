@@ -1,6 +1,5 @@
 import './App.css'
 import Select from './components/Select'
-import Сounter from './components/Сounter'
 import Timer from './components/timer'
 
 function App() {
@@ -8,8 +7,7 @@ function App() {
     <div>
       <Select/>
       <hr/>
-      <Сounter/>
-      {/* <Timer/> */}
+      <Timer/>
     </div>
   )
 }
