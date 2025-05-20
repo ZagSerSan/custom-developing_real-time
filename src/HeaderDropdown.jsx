@@ -3,13 +3,16 @@ import { useState } from "react"
 export default function HeaderDropdown() {
   const [isOpen, setIsOpen] = useState(false)
 
+  // Закрытие по повторному клику
+  const handleClick = () => setIsOpen((prev) => !prev)
+
   return (
     <div
-      onMouseEnter={() => setIsOpen(true)}
+      onMouseEnter={() => setIsOpen(true)} // Наведение (десктоп)
       onMouseLeave={() => setIsOpen(false)}
     >
-      {/* Элемент, на который наводимся */}
-      <button>Меню</button>
+      {/* Кнопка открытия — работает и по клику */}
+      <button onClick={handleClick}>Меню</button>
 
       {/* Выпадающее меню */}
       {isOpen && (
